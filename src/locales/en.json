@@ -1,0 +1,40 @@
+{
+	"common": {
+		"loading": "Loading...",
+		"error": "An error occurred",
+		"retry": "Retry",
+		"save": "Save",
+		"cancel": "Cancel",
+		"delete": "Delete",
+		"edit": "Edit",
+		"close": "Close",
+		"confirm": "Confirm",
+		"search": "Search",
+		"filter": "Filter",
+		"reset": "Reset",
+		"submit": "Submit",
+		"back": "Back",
+		"next": "Next",
+		"previous": "Previous",
+		"success": "Success",
+		"failed": "Failed"
+	},
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"services": "Services",
+		"portfolio": "Portfolio",
+		"contact": "Contact"
+	},
+	"theme": {
+		"dark": "Dark",
+		"light": "Light",
+		"system": "System",
+		"toggleTheme": "Toggle theme"
+	},
+	"language": {
+		"select": "Select language",
+		"en": "English",
+		"id": "Indonesia"
+	}
+}

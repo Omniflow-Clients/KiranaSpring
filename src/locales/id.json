@@ -1,0 +1,40 @@
+{
+	"common": {
+		"loading": "Memuat...",
+		"error": "Terjadi kesalahan",
+		"retry": "Coba lagi",
+		"save": "Simpan",
+		"cancel": "Batal",
+		"delete": "Hapus",
+		"edit": "Ubah",
+		"close": "Tutup",
+		"confirm": "Konfirmasi",
+		"search": "Cari",
+		"filter": "Filter",
+		"reset": "Reset",
+		"submit": "Kirim",
+		"back": "Kembali",
+		"next": "Selanjutnya",
+		"previous": "Sebelumnya",
+		"success": "Berhasil",
+		"failed": "Gagal"
+	},
+	"nav": {
+		"home": "Beranda",
+		"about": "Tentang",
+		"services": "Layanan",
+		"portfolio": "Portofolio",
+		"contact": "Kontak"
+	},
+	"theme": {
+		"dark": "Gelap",
+		"light": "Terang",
+		"sistem": "Sistem",
+		"toggleTheme": "Ganti tema"
+	},
+	"language": {
+		"select": "Pilih bahasa",
+		"en": "English",
+		"id": "Bahasa Indonesia"
+	}
+}

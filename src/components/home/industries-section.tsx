@@ -1,26 +1,21 @@
-import { Badge } from "@/components/ui/badge";
 import {
 	Card,
 	CardDescription,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import {
-	type IndustrySegment,
-	industrySegments,
-} from "@/data/company-profile";
+import { type IndustrySegment, industrySegments } from "@/data/company-profile";
 
 function IndustryCard({ title, description }: IndustrySegment) {
 	return (
-		<Card className="border-border/70 bg-background/85 shadow-sm shadow-primary/5">
-			<CardHeader className="space-y-3">
-				<Badge variant="secondary" className="w-fit rounded-full px-3 py-1">
-					Industri
-				</Badge>
-				<div className="space-y-2">
-					<CardTitle className="text-xl leading-tight">{title}</CardTitle>
-					<CardDescription className="text-sm leading-7">{description}</CardDescription>
-				</div>
+		<Card className="border-border/70 bg-background/85 p-6 shadow-sm shadow-primary/5 transition-transform duration-200 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/10">
+			<CardHeader className="space-y-2">
+				<CardTitle className="font-heading text-xl leading-tight">
+					{title}
+				</CardTitle>
+				<CardDescription className="text-sm leading-7">
+					{description}
+				</CardDescription>
 			</CardHeader>
 		</Card>
 	);
@@ -28,25 +23,21 @@ function IndustryCard({ title, description }: IndustrySegment) {
 
 export function IndustriesSection() {
 	return (
-		<section className="mx-auto w-full max-w-screen-2xl px-6 py-16 lg:px-8 xl:px-10 2xl:px-12">
-			<div className="grid gap-8 xl:grid-cols-12 xl:gap-10">
-				<div className="xl:col-span-4">
+		<section className="mx-auto w-full max-w-screen-2xl px-6 py-28 lg:px-8 xl:px-10 2xl:px-12">
+			<div className="mx-auto mb-14 max-w-2xl text-center">
 				<p className="mb-3 text-sm font-medium tracking-[0.22em] text-primary uppercase">
 					Bidang Industri
 				</p>
-				<h2 className="text-3xl font-semibold tracking-tight">
-					Kami melayani kebutuhan komponen pegas untuk berbagai sektor manufaktur dan
-					engineering.
+				<h2 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl">
+					Kami melayani kebutuhan komponen pegas untuk berbagai sektor
+					manufaktur dan engineering.
 				</h2>
-				</div>
+			</div>
 
-				<div className="grid gap-5 md:grid-cols-2 xl:col-span-8 xl:grid-cols-8">
+			<div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2">
 				{industrySegments.map((item) => (
-					<div key={item.title} className="xl:col-span-2">
-						<IndustryCard {...item} />
-					</div>
+					<IndustryCard key={item.title} {...item} />
 				))}
-				</div>
 			</div>
 		</section>
 	);

@@ -1,70 +1,69 @@
 import { ArrowRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import type { HeroHighlight } from "@/data/company-profile";
 import { heroHighlights } from "@/data/company-profile";
 
 function HighlightCard({ value, label }: HeroHighlight) {
 	return (
-		<Card className="border-primary/10 bg-background/80 shadow-sm shadow-primary/5">
-			<CardContent className="p-6 text-center">
-				<p className="text-2xl font-semibold text-foreground">{value}</p>
-				<p className="mt-1 text-sm text-muted-foreground">{label}</p>
-			</CardContent>
-		</Card>
+		<div className="rounded-[1.75rem] bg-white px-6 py-12 text-center shadow-[0_18px_40px_rgba(146,146,146,0.1)]">
+			<p className="text-[1.7rem] leading-tight font-semibold text-[#1848d4] md:text-[2.1rem]">
+				{value}
+			</p>
+			<p className="mx-auto mt-3 max-w-[15rem] text-[1.05rem] leading-[1.15] text-[#99a4d1] md:text-[1.15rem]">
+				{label}
+			</p>
+		</div>
 	);
 }
 
 export function HeroSection() {
 	return (
-		<section className="mx-auto w-full max-w-screen-2xl px-6 pt-10 pb-6 lg:px-8 xl:px-10 2xl:px-12 md:pt-16 md:pb-8">
-			<div className="relative overflow-hidden rounded-[2rem] border border-primary/10 bg-card/92 p-8 shadow-xl shadow-primary/10 md:p-12 lg:p-16">
-				<div className="pointer-events-none absolute -top-16 right-0 size-56 rounded-full bg-primary/10 blur-3xl" />
-				<div className="pointer-events-none absolute bottom-0 left-0 size-48 rounded-full bg-accent/20 blur-3xl" />
+		<section className="mx-auto w-full max-w-screen-[2048px] px-1 pb-1 md:px-2">
+			<div className="grid min-h-[calc(100svh-8.8rem)] grid-cols-1 overflow-hidden bg-[#d9d9d9] lg:grid-cols-[1.05fr_1.45fr]">
+				<div className="relative isolate min-h-[28rem] overflow-hidden px-6 py-10 md:px-8 md:py-12 lg:min-h-[48rem] lg:px-12 lg:py-16">
+					<div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_30%,rgba(255,255,255,0.94),rgba(255,255,255,0.48)_36%,transparent_72%),linear-gradient(90deg,rgba(255,255,255,0.6),rgba(255,255,255,0.18)_52%,rgba(255,255,255,0.6)_100%)]" />
+					<div className="hero-machine absolute inset-0 opacity-90" />
+					<div className="absolute -left-8 bottom-6 h-48 w-48 rounded-full border-[18px] border-white/45" />
+					<div className="absolute right-8 top-10 h-28 w-28 rounded-full border-[14px] border-white/35" />
 
-				<div className="relative mx-auto max-w-4xl space-y-8 text-center">
-					<Badge
-						variant="outline"
-						className="rounded-full border-accent/35 bg-accent/10 px-4 py-1 text-[0.7rem] tracking-[0.2em] text-accent-foreground uppercase"
-					>
-						PT Prima Kirana Spring &bull; Kudus, Jawa Tengah
-					</Badge>
+					<div className="relative z-10 mx-auto flex h-full max-w-[44rem] items-start lg:items-center">
+						<h1 className="max-w-[20ch] text-[2.45rem] leading-[0.96] font-semibold tracking-tight text-[#1848d4] md:text-[3.35rem] lg:text-[4.1rem] xl:text-[4.7rem]">
+							Designed for you,
+							<br />
+							<span className="inline-block bg-[#ffd32c] px-3 py-1 font-semibold italic">
+								PERFECTED
+							</span>{" "}
+							in every details.
+						</h1>
+					</div>
+				</div>
 
-					<h1 className="text-4xl leading-tight font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl">
-						Produsen pegas presisi dan custom manufacturing sejak 1995.
-					</h1>
+				<div className="flex flex-col justify-between px-6 py-10 md:px-8 md:py-12 lg:px-12 lg:py-16 xl:px-18">
+					<div className="grid gap-4 md:grid-cols-2 md:gap-5 xl:gap-6">
+						{heroHighlights.map((item) => (
+							<HighlightCard key={item.value} {...item} />
+						))}
+					</div>
 
-					<p className="mx-auto max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
-						PT Prima Kirana Spring adalah perusahaan manufaktur pegas yang fokus
-						pada produksi spring berkualitas tinggi dengan presisi, ketahanan,
-						dan konsistensi yang terjaga untuk kebutuhan industri skala kecil
-						hingga besar.
-					</p>
-
-					<div className="flex flex-wrap justify-center gap-3">
-						<Button asChild size="lg">
-							<a href="#produk">
-								Lihat Produk
-								<ArrowRight className="size-4" />
-							</a>
+					<div className="mt-8 flex flex-wrap justify-center gap-4 lg:mt-12">
+						<Button
+							asChild
+							size="lg"
+							className="h-auto rounded-[1.2rem] bg-[#8f8f8f] px-10 py-6 text-[1.05rem] font-medium text-white hover:bg-[#7d7d7d]"
+						>
+							<a href="#profil">Tentang Kami</a>
 						</Button>
 						<Button
 							asChild
-							variant="outline"
 							size="lg"
-							className="border-primary/15 bg-background/80"
+							className="h-auto rounded-[1.2rem] bg-[#ffd32c] px-10 py-6 text-[1.05rem] font-medium text-[#1848d4] hover:bg-[#f1c61d]"
 						>
-							<a href="#kontak">Diskusikan Kebutuhan</a>
+							<a href="#produk">
+								Lihat Produk <ArrowRight className="size-4" />
+							</a>
 						</Button>
 					</div>
 				</div>
-			</div>
-
-			<div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-				{heroHighlights.map((item) => (
-					<HighlightCard key={item.value} {...item} />
-				))}
 			</div>
 		</section>
 	);

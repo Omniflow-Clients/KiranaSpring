@@ -1,35 +1,37 @@
 import type { ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 
-function HomeAnchor({
-	href,
-	children,
-}: {
-	href: string;
-	children: ReactNode;
-}) {
+function SectionAnchor({ href, children }: { href: string; children: ReactNode }) {
 	return (
 		<a
 			href={href}
-			className="rounded-full px-4 py-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+			className="rounded-[1.2rem] px-4 py-3 text-base font-medium text-black transition-colors hover:text-primary"
 		>
 			{children}
 		</a>
 	);
 }
 
-function NavItem({ to, children }: { to: string; children: ReactNode }) {
+function NavItem({
+	to,
+	children,
+	end = false,
+}: {
+	to: string;
+	children: ReactNode;
+	end?: boolean;
+}) {
 	return (
 		<NavLink
 			to={to}
+			end={end}
 			className={({ isActive }) =>
 				[
-					"rounded-full px-4 py-2 text-sm transition-colors",
+					"rounded-[1.2rem] px-6 py-3 text-base font-medium transition-colors",
 					isActive
-						? "bg-primary text-primary-foreground"
-						: "text-muted-foreground hover:text-primary",
+						? "bg-[#c5c5c5] text-white"
+						: "text-black hover:text-primary",
 				].join(" ")
 			}
 		>
@@ -40,42 +42,99 @@ function NavItem({ to, children }: { to: string; children: ReactNode }) {
 
 export function SiteShell({ children }: { children: ReactNode }) {
 	return (
-		<div className="min-h-svh bg-background text-foreground">
-			<header className="sticky top-0 z-20 border-b border-primary/10 bg-background/88 backdrop-blur-xl">
-				<div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between gap-4 px-6 py-4 lg:px-8 xl:px-10 2xl:px-12">
-					<Link className="flex items-center gap-3" to="/">
-						<div className="flex size-10 items-center justify-center rounded-full border border-primary/15 bg-primary text-sm font-semibold tracking-[0.22em] text-primary-foreground shadow-lg shadow-primary/20">
-							PK
-						</div>
-						<div>
-							<p className="text-sm font-semibold tracking-[0.18em] text-foreground uppercase">
-								Prima Kirana Spring
-							</p>
-							<p className="text-xs text-muted-foreground">
-								Produsen pegas presisi sejak 1995
-							</p>
-						</div>
-					</Link>
+		<div className="min-h-svh bg-[#d2d2d2] text-foreground">
+			<header className="sticky top-0 z-20 bg-white/92 backdrop-blur-xl">
+				<div className="mx-auto flex w-full max-w-screen-[2048px] flex-col gap-4 px-5 py-5 lg:px-12 xl:px-14 2xl:px-16">
+					<div className="flex items-center justify-between gap-6">
+						<Link className="flex items-center gap-4" to="/">
+							<div className="flex h-18 w-18 items-center justify-center overflow-hidden rounded-[0.9rem] bg-[#2f58e7] shadow-lg shadow-[#2f58e7]/18">
+								<svg
+									aria-hidden="true"
+									viewBox="0 0 80 80"
+									className="h-14 w-14"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M16 63C40 48 54 34 61 17"
+										stroke="#fff"
+										strokeWidth="3.2"
+										strokeLinecap="round"
+									/>
+									<path
+										d="M15 48C38 34 54 24 66 12"
+										stroke="#fff"
+										strokeWidth="3.2"
+										strokeLinecap="round"
+										opacity="0.9"
+									/>
+									<path
+										d="M18 32C40 25 54 21 65 17"
+										stroke="#fff"
+										strokeWidth="3.2"
+										strokeLinecap="round"
+										opacity="0.8"
+									/>
+									<path
+										d="M18 69C25 53 29 38 29 15"
+										stroke="#ffd42f"
+										strokeWidth="3.6"
+										strokeLinecap="round"
+									/>
+									<path
+										d="M18 20L22 11L26 20L35 24L26 28L22 37L18 28L9 24L18 20Z"
+										fill="#ffd42f"
+									/>
+								</svg>
+							</div>
+							<div className="leading-none">
+								<p className="text-[1.95rem] font-semibold tracking-tight text-[#1848d4] md:text-[2.35rem]">
+									PT PRIMA <span className="text-[#f2a238]">KIRANA</span> SPRING
+								</p>
+							</div>
+						</Link>
 
-					<div className="flex items-center gap-2">
-						<nav className="hidden items-center gap-1 rounded-full border border-primary/10 bg-background/80 p-1 shadow-sm shadow-primary/5 md:flex">
-							<HomeAnchor href="/#profil">Profil</HomeAnchor>
-							<HomeAnchor href="/#produk">Produk</HomeAnchor>
-							<HomeAnchor href="/#kontak">Kontak</HomeAnchor>
+						<nav className="hidden items-center gap-2 xl:flex">
+							<NavItem to="/" end>
+								Home
+							</NavItem>
+							<SectionAnchor href="/#profil">Profil</SectionAnchor>
+							<SectionAnchor href="/#produk">Produk</SectionAnchor>
+							<SectionAnchor href="/#kontak">Kontak</SectionAnchor>
 							<NavItem to="/blog">Blog</NavItem>
+							<Button
+								asChild
+								size="lg"
+								className="ml-4 h-auto rounded-[1.2rem] bg-[#2f58e7] px-10 py-6 text-base font-medium text-white hover:bg-[#244be0]"
+							>
+								<a href="/#kontak">Hubungi Kami</a>
+							</Button>
 						</nav>
-						<Button asChild size="sm" className="hidden md:inline-flex">
+					</div>
+
+					<nav className="flex flex-wrap items-center gap-2 xl:hidden">
+						<NavItem to="/" end>
+							Home
+						</NavItem>
+						<SectionAnchor href="/#profil">Profil</SectionAnchor>
+						<SectionAnchor href="/#produk">Produk</SectionAnchor>
+						<SectionAnchor href="/#kontak">Kontak</SectionAnchor>
+						<NavItem to="/blog">Blog</NavItem>
+						<Button
+							asChild
+							size="sm"
+							className="ml-auto h-auto rounded-[1rem] bg-[#2f58e7] px-5 py-5 text-sm text-white hover:bg-[#244be0]"
+						>
 							<a href="/#kontak">Hubungi Kami</a>
 						</Button>
-						<ModeToggle />
-					</div>
+					</nav>
 				</div>
 			</header>
 
 			<main>{children}</main>
 
-			<footer className="border-t border-primary/10 bg-muted/90">
-				<div className="mx-auto flex w-full max-w-screen-2xl flex-col gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between lg:px-8 xl:px-10 2xl:px-12">
+			<footer className="border-t border-black/5 bg-white/70">
+				<div className="mx-auto flex w-full max-w-screen-[2048px] flex-col gap-3 px-5 py-8 text-sm text-[#5f6781] md:flex-row md:items-center md:justify-between lg:px-12 xl:px-14 2xl:px-16">
 					<p>
 						PT Prima Kirana Spring • Jl. Lingkar Utara UMK (timur Djarum Oasis), Kudus 59325
 					</p>

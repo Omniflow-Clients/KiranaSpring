@@ -1,23 +1,91 @@
-import { ArrowRight, Factory, Target } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { startTransition, useState } from "react";
 import {
-	type CompanyValue,
-	type IconComponent,
-	coreValues,
-	missionPoints,
-} from "@/data/company-profile";
+	ArrowLeft,
+	ArrowRight,
+	Handshake,
+	Lightbulb,
+	ShieldCheck,
+	Target,
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { coreValues, missionPoints, trustReasons } from "@/data/company-profile";
 
-function ValuePill({ icon: Icon, title, description }: CompanyValue) {
+type CarouselSlide = {
+	id: string;
+	title: string;
+	accent: string;
+	description?: string[];
+	type: "intro" | "experience" | "mission" | "values" | "commitment";
+};
+
+const profileSlides: readonly CarouselSlide[] = [
+	{
+		id: "halo",
+		title: "HALO!",
+		accent: "Halo!",
+		type: "intro",
+		description: [
+			"Kami merasa terhormat atas waktu yang Anda luangkan untuk mengenal lebih dekat PT Prima Kirana Spring. Sejak tahun 1995, kami telah membangun reputasi sebagai perusahaan manufaktur yang fokus pada produksi spring berkualitas tinggi dengan tingkat presisi, ketahanan, dan konsistensi yang terjaga. Berpengalaman melayani kebutuhan skala kecil hingga besar, kami terus berinovasi dan meningkatkan standar kualitas di setiap lini produksi.",
+			"Dengan komitmen pada setiap detail pekerjaan, kami menghadirkan solusi profesional, unggul, dan dapat diandalkan. Kepercayaan dari berbagai perusahaan besar menjadi bukti dedikasi kami dalam menjaga mutu dan pelayanan. Kami berharap dapat menjalin kemitraan jangka panjang serta tumbuh dan berkembang bersama di masa depan.",
+		],
+	},
+	{
+		id: "pengalaman",
+		title: "Pengalaman",
+		accent: "30+ Tahun",
+		type: "experience",
+		description: [
+			"PT Prima Kirana Spring merupakan perusahaan manufaktur pegas yang berlokasi di Kudus, Jawa Tengah. Perusahaan ini berawal dari CV Prima Spring yang didirikan pada tahun 1995 oleh Bpk. Hudyono. Meski memiliki latar belakang pendidikan di bidang medis, pendiri memiliki minat dan kemampuan teknis yang kuat dalam dunia manufaktur.",
+			"Sebelum berdirinya Prima Spring, beliau telah merintis Prima Teknik sebagai penyedia komponen logam untuk kebutuhan industri elektronika. Dalam perjalanan bisnis yang dinamis, perusahaan terus beradaptasi hingga bertransformasi menjadi PT Prima Kirana Spring sebagai bentuk penguatan identitas dan komitmen terhadap pertumbuhan jangka panjang.",
+			"Kini tongkat estafet kepemimpinan dipercayakan kepada generasi penerus, yaitu Stefani R. Hudyono, yang membawa perusahaan ke arah yang lebih modern, inovatif, dan kompetitif.",
+		],
+	},
+	{
+		id: "visi-misi",
+		title: "Visi & Misi",
+		accent: "Visi & Misi",
+		type: "mission",
+	},
+	{
+		id: "core-value",
+		title: "Core Value",
+		accent: "Core Value",
+		type: "values",
+	},
+	{
+		id: "komitmen",
+		title: "Komitmen",
+		accent: "Komitmen",
+		type: "commitment",
+		description: [
+			"Setiap proses kerja kami disusun untuk menjaga presisi dimensi, konsistensi elastisitas, dan ketahanan material pada setiap produk.",
+			"Kami terbiasa menangani kebutuhan standard part maupun custom design, dengan pendekatan yang rapi sejak incoming QC hingga final packing.",
+			"Komitmen tersebut membuat PT Prima Kirana Spring dipercaya sebagai mitra manufaktur untuk kebutuhan industri skala kecil hingga besar.",
+		],
+	},
+];
+
+function DirectorVisual() {
 	return (
-		<div className="rounded-[28px] border border-border/70 bg-background/82 p-6 shadow-sm shadow-primary/5">
-			<div className="flex items-start gap-4">
-				<div className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-accent/35 bg-accent/15 text-accent">
-					<Icon className="size-5" />
+		<div className="relative mx-auto max-w-[34rem]">
+			<div className="absolute left-[-2.3rem] top-14 h-[76%] w-14 rounded-[0.9rem] bg-[#bdbdbd]" />
+			<div className="absolute right-[-2.3rem] top-12 h-[77%] w-14 rounded-[0.9rem] bg-[#bdbdbd]" />
+
+			<div className="relative rounded-[1.8rem] bg-white px-8 pt-8 pb-6 shadow-[0_20px_50px_rgba(156,156,156,0.15)]">
+				<div className="mx-auto flex h-[33rem] max-w-[20rem] items-end justify-center overflow-hidden rounded-[0.3rem] bg-[#3559e4]">
+					<div className="profile-portrait relative h-full w-full">
+						<div className="absolute inset-x-7 bottom-0 top-0 overflow-hidden">
+							<div className="profile-portrait__glow" />
+							<div className="profile-portrait__figure" />
+						</div>
+					</div>
 				</div>
-				<div className="space-y-1">
-					<h3 className="font-heading text-lg text-foreground">{title}</h3>
-					<p className="text-sm leading-7 text-muted-foreground">
-						{description}
+
+				<div className="relative z-10 -mt-8 ml-auto w-fit rounded-[0.2rem] bg-white px-7 py-4 shadow-[0_12px_30px_rgba(0,0,0,0.08)]">
+					<p className="text-right text-[0.95rem] font-semibold tracking-tight text-[#1848d4] md:text-[1.05rem]">
+						Stefani R. Hudyono
+						<br />
+						Director
 					</p>
 				</div>
 			</div>
@@ -25,214 +93,278 @@ function ValuePill({ icon: Icon, title, description }: CompanyValue) {
 	);
 }
 
-function DirectorNote({
+function SpringVisual() {
+	return (
+		<div className="relative mx-auto flex h-[38rem] w-full max-w-[34rem] items-center justify-center overflow-hidden rounded-[1.8rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)]">
+			<div className="absolute inset-y-0 left-[18%] w-[48%] bg-[#cf9e31]" />
+			<div className="absolute inset-y-5 left-[29%] w-[41%] bg-black/14" />
+			<div className="spring-machine absolute left-[3%] top-[14%] h-[78%] w-[74%]" />
+		</div>
+	);
+}
+
+function ValueCard({
 	icon: Icon,
-	body,
+	title,
+	description,
 }: {
-	icon: IconComponent;
-	body: string;
+	icon: typeof Target;
+	title: string;
+	description: string;
 }) {
 	return (
-		<div className="flex items-start gap-3">
-			<Icon className="mt-0.5 size-4 shrink-0 text-primary" />
-			<p className="text-sm leading-7 text-muted-foreground">{body}</p>
+		<div className="rounded-[1.8rem] bg-[#2f58e7] p-6 text-white shadow-[0_18px_35px_rgba(47,88,231,0.18)]">
+			<div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/12">
+				<Icon className="size-7" />
+			</div>
+			<h3 className="mt-5 text-[1.7rem] font-semibold">{title}</h3>
+			<p className="mt-3 text-[1.02rem] leading-7 text-white/88">{description}</p>
+		</div>
+	);
+}
+
+function AccentTitle({
+	title,
+	className = "",
+}: {
+	title: string;
+	className?: string;
+}) {
+	return (
+		<div className={["inline-block bg-[#ffd32c] px-5 py-1", className].join(" ")}>
+			<h2 className="font-heading text-[3.3rem] leading-none font-semibold tracking-tight text-[#2f58e7] md:text-[4.4rem] xl:text-[5.1rem]">
+				{title}
+			</h2>
+		</div>
+	);
+}
+
+function SlideVisual({ slide }: { slide: CarouselSlide }) {
+	switch (slide.type) {
+		case "intro":
+		case "experience":
+			return <DirectorVisual />;
+		case "mission":
+			return <SpringVisual />;
+		case "values":
+			return (
+				<div className="relative mx-auto flex h-[38rem] w-full max-w-[34rem] items-center justify-center overflow-hidden rounded-[1.8rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)]">
+					<div className="core-spring absolute inset-x-0 top-0 h-[31%]" />
+					<div className="absolute inset-x-0 top-[31%] h-[20%] bg-[#4f4f4f]" />
+					<div className="absolute inset-x-0 bottom-0 grid h-[49%] grid-cols-2 gap-px bg-[#dcdcdc] p-8">
+						<div className="rounded-[1.2rem] bg-[#2f58e7]" />
+						<div className="rounded-[1.2rem] bg-[#2f58e7]" />
+						<div className="rounded-[1.2rem] bg-[#2f58e7]" />
+						<div className="rounded-[1.2rem] bg-[#2f58e7]" />
+					</div>
+				</div>
+			);
+		case "commitment":
+			return (
+				<div className="relative mx-auto flex h-[38rem] w-full max-w-[34rem] items-center justify-center overflow-hidden rounded-[1.8rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)]">
+					<div className="commitment-waves absolute inset-0" />
+					<div className="absolute left-9 top-9 rounded-full bg-[#2f58e7]/12 px-4 py-2 text-sm font-semibold text-[#2f58e7]">
+						Quality First
+					</div>
+					<div className="absolute right-10 top-16 rounded-full bg-[#ffd32c]/90 px-4 py-2 text-sm font-semibold text-[#1848d4]">
+						Trusted Process
+					</div>
+					<div className="absolute bottom-10 left-8 right-8 rounded-[1.6rem] bg-[#2f58e7] p-7 text-white">
+						<p className="text-2xl font-semibold">Built for consistency.</p>
+						<p className="mt-3 text-base leading-7 text-white/85">
+							Presisi, kontrol kualitas, dan respons terhadap kebutuhan custom.
+						</p>
+					</div>
+				</div>
+			);
+	}
+}
+
+function SlideBody({ slide }: { slide: CarouselSlide }) {
+	if (slide.type === "mission") {
+		return (
+			<div className="space-y-8 pt-2 lg:pt-8">
+				<AccentTitle title={slide.title} />
+
+				<div className="space-y-6">
+					<div className="rounded-[2rem] bg-[#2f58e7] px-8 py-7 text-white shadow-[0_18px_35px_rgba(47,88,231,0.18)]">
+						<p className="text-[2rem] font-semibold text-[#ffd32c]">Visi</p>
+						<p className="mt-3 text-[1.35rem] leading-[1.2] font-medium">
+							Menjadi perusahaan manufaktur pegas (spring) yang unggul,
+							presisi, dan terpercaya di Indonesia.
+						</p>
+					</div>
+
+					<div className="rounded-[2rem] bg-[#2f58e7] px-8 py-7 text-white shadow-[0_18px_35px_rgba(47,88,231,0.18)]">
+						<p className="text-[2rem] font-semibold text-[#ffd32c]">Misi</p>
+						<ul className="mt-4 space-y-4 text-[1.2rem] leading-[1.2]">
+							{missionPoints.map((point) => (
+								<li key={point} className="flex gap-3">
+									<span className="mt-1 text-[#ffd32c]">-</span>
+									<span>{point}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			</div>
+		);
+	}
+
+	if (slide.type === "values") {
+		return (
+			<div className="space-y-8 pt-2 lg:pt-8">
+				<AccentTitle title={slide.title} />
+				<div className="grid gap-5 md:grid-cols-2">
+					<ValueCard
+						icon={Target}
+						title={coreValues[0].title}
+						description={coreValues[0].description}
+					/>
+					<ValueCard
+						icon={Handshake}
+						title={coreValues[1].title}
+						description={coreValues[1].description}
+					/>
+					<ValueCard
+						icon={ShieldCheck}
+						title={coreValues[2].title}
+						description={coreValues[2].description}
+					/>
+					<ValueCard
+						icon={Lightbulb}
+						title={coreValues[3].title}
+						description={coreValues[3].description}
+					/>
+				</div>
+			</div>
+		);
+	}
+
+	if (slide.type === "commitment") {
+		return (
+			<div className="space-y-8 pt-2 lg:pt-8">
+				<AccentTitle title={slide.title} />
+				<div className="grid gap-4">
+					{trustReasons.map((item) => (
+						<div
+							key={item.title}
+							className="rounded-[1.8rem] border border-white/70 bg-white/82 px-7 py-6 shadow-[0_16px_34px_rgba(141,141,141,0.08)]"
+						>
+							<p className="text-[1.45rem] font-semibold text-[#1848d4]">
+								{item.title}
+							</p>
+							<p className="mt-3 text-[1.02rem] leading-7 text-[#4d556e]">
+								{item.description}
+							</p>
+						</div>
+					))}
+				</div>
+			</div>
+		);
+	}
+
+	return (
+		<div className="space-y-8 pt-2 lg:pt-8">
+			<AccentTitle title={slide.title} />
+			{slide.type === "experience" ? (
+				<p className="-mt-3 text-[1.15rem] font-medium text-[#2f58e7] md:text-[1.45rem]">
+					Pengalaman lebih dari{" "}
+					<span className="bg-[#ffd32c] px-2 py-1 font-semibold text-[#1848d4]">
+						30 Tahun
+					</span>
+				</p>
+			) : null}
+
+			<div className="max-w-[52rem] space-y-6 text-[1.1rem] leading-[1.15] text-black md:text-[1.35rem] xl:text-[1.75rem]">
+				{slide.description?.map((paragraph) => (
+					<p key={paragraph}>{paragraph}</p>
+				))}
+			</div>
 		</div>
 	);
 }
 
 export function CompanyProfileSection() {
+	const [activeIndex, setActiveIndex] = useState(0);
+	const activeSlide = profileSlides[activeIndex];
+
+	const changeSlide = (direction: -1 | 1) => {
+		startTransition(() => {
+			setActiveIndex((current) => {
+				const nextIndex = current + direction;
+				if (nextIndex < 0) {
+					return profileSlides.length - 1;
+				}
+				if (nextIndex >= profileSlides.length) {
+					return 0;
+				}
+				return nextIndex;
+			});
+		});
+	};
+
 	return (
 		<section
 			id="profil"
-			className="mx-auto w-full max-w-screen-2xl px-6 py-28 lg:px-8 xl:px-10 2xl:px-12"
+			className="mx-auto w-full max-w-screen-[2048px] px-1 pb-10 md:px-2 md:pb-14"
 		>
-			<div className="grid gap-10 xl:grid-cols-[0.9fr_1.1fr] xl:items-end">
-				<div className="max-w-xl">
-					<p className="mb-3 text-sm font-medium tracking-[0.22em] text-primary uppercase">
-						Profil Perusahaan
-					</p>
-					<h2 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl xl:text-5xl">
-						Lebih dari tiga dekade berfokus pada manufaktur pegas yang presisi dan
-						dapat diandalkan.
-					</h2>
-				</div>
-
-				<div className="max-w-2xl space-y-4 text-base leading-8 text-muted-foreground">
-					<p>
-						PT Prima Kirana Spring tumbuh dari pengalaman panjang di industri
-						komponen logam, lalu berkembang menjadi manufaktur spring yang lebih
-						modern, presisi, dan siap mengikuti kebutuhan produksi pelanggan.
-					</p>
-					<p>
-						Fokus kami bukan sekadar menghasilkan produk, tetapi membangun sistem
-						kerja yang rapi dari material masuk hingga pengiriman akhir agar mutu
-						tetap konsisten pada setiap batch.
-					</p>
-				</div>
-			</div>
-
-			<div className="mt-16 overflow-hidden rounded-[36px] border border-primary/10 bg-background/88 shadow-[0_24px_70px_-40px_rgba(41,70,189,0.35)]">
-				<div className="grid gap-0 xl:grid-cols-[1.2fr_0.8fr]">
-					<div className="space-y-8 p-8 md:p-10 xl:p-12">
-						<div className="flex flex-wrap gap-3">
-							<Badge variant="secondary" className="rounded-full px-3 py-1">
-								Sejak 1995
-							</Badge>
-							<Badge variant="secondary" className="rounded-full px-3 py-1">
-								Kudus, Jawa Tengah
-							</Badge>
-							<Badge variant="secondary" className="rounded-full px-3 py-1">
-								Spring Manufacturing
-							</Badge>
-						</div>
-
-						<div className="max-w-3xl space-y-5">
-							<h3 className="font-heading text-2xl font-semibold text-foreground md:text-3xl">
-								Dari fondasi manufaktur lokal menuju partner produksi yang lebih
-								modern dan kompetitif.
-							</h3>
-							<div className="space-y-4 text-sm leading-8 text-muted-foreground md:text-base">
-								<p>
-									PT Prima Kirana Spring berawal dari CV Prima Spring yang
-									didirikan pada tahun 1995 oleh Bpk. Hudyono. Sebelumnya, beliau
-									juga merintis Prima Teknik sebagai penyedia komponen logam untuk
-									kebutuhan industri elektronika.
-								</p>
-								<p>
-									Perjalanan tersebut membentuk pemahaman yang kuat terhadap
-									presisi produksi, kebutuhan industri, dan pentingnya kualitas
-									yang konsisten dalam skala manufaktur.
-								</p>
-								<p>
-									Kini perusahaan dipimpin oleh Stefani R. Hudyono dengan arah
-									pengembangan yang lebih modern, inovatif, dan kompetitif, tanpa
-									melepas standar mutu yang telah dibangun selama bertahun-tahun.
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div className="border-t border-primary/10 bg-muted/60 p-8 md:p-10 xl:border-t-0 xl:border-l xl:p-12">
-						<div className="space-y-6">
-							<div className="space-y-3">
-								<div className="flex size-12 items-center justify-center rounded-2xl border border-accent/35 bg-accent/15 text-accent">
-									<Target className="size-5" />
-								</div>
-								<p className="text-xs font-medium tracking-[0.22em] text-accent uppercase">
-									Visi
-								</p>
-								<p className="font-heading text-xl leading-8 text-foreground">
-									Menjadi perusahaan manufaktur pegas yang unggul, presisi, dan
-									terpercaya di Indonesia.
-								</p>
-							</div>
-
-							<div className="h-px bg-border/70" />
-
-							<div className="space-y-4">
-								<div className="flex size-12 items-center justify-center rounded-2xl border border-accent/35 bg-accent/15 text-accent">
-									<Factory className="size-5" />
-								</div>
-								<p className="text-xs font-medium tracking-[0.22em] text-accent uppercase">
-									Misi
-								</p>
-								<ul className="space-y-3 text-sm leading-7 text-muted-foreground">
-									{missionPoints.map((point) => (
-										<li key={point} className="flex gap-3">
-											<span className="mt-2 size-2 shrink-0 rounded-full bg-accent" />
-											<span>{point}</span>
-										</li>
-									))}
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div className="mt-10 grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-				<div className="rounded-[32px] border border-border/70 bg-background/86 p-8 shadow-sm shadow-primary/5 md:p-10">
-					<div className="space-y-5">
-						<Badge variant="secondary" className="rounded-full px-3 py-1">
-							Sambutan Direktur
-						</Badge>
-						<div className="space-y-3">
-							<h3 className="font-heading text-2xl font-semibold text-foreground">
-								Komitmen pada setiap detail pekerjaan.
-							</h3>
-							<p className="text-sm leading-7 text-muted-foreground">
-								Kami menghadirkan solusi profesional, unggul, dan dapat
-								diandalkan untuk membangun kemitraan jangka panjang bersama
-								pelanggan.
-							</p>
-						</div>
-						<div className="space-y-4 rounded-[28px] border border-primary/10 bg-muted/65 p-6">
-							<DirectorNote
-								icon={Factory}
-								body="Sejak tahun 1995, kami membangun reputasi sebagai perusahaan manufaktur yang fokus pada produksi spring berkualitas tinggi."
-							/>
-							<DirectorNote
-								icon={ArrowRight}
-								body="Presisi, ketahanan, dan konsistensi menjadi dasar dalam menjaga mutu produk sekaligus standar pelayanan kami."
-							/>
-						</div>
-						<p className="font-medium text-foreground">
-							Stefani R. Hudyono &bull; Director
-						</p>
-					</div>
-				</div>
-
-				<div className="rounded-[32px] border border-primary/10 bg-primary p-8 text-primary-foreground shadow-xl shadow-primary/20 md:p-10">
-					<div className="flex h-full flex-col justify-between gap-8">
-						<div className="space-y-4">
-							<Badge
-								variant="outline"
-								className="w-fit rounded-full border-white/20 bg-white/10 px-3 py-1 text-white"
+			<div className="profile-panel relative overflow-hidden bg-[#e5e5e5] px-6 py-8 md:px-10 md:py-10 lg:px-14 lg:py-12">
+				<div className="relative grid gap-10 xl:grid-cols-[0.9fr_1.1fr] xl:items-start">
+					<div className="space-y-6">
+						<div className="relative mx-auto max-w-[40rem] px-8 lg:px-14">
+							<button
+								type="button"
+								aria-label="Profil sebelumnya"
+								onClick={() => changeSlide(-1)}
+								className="absolute left-0 top-[38%] z-10 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105"
 							>
-								Designed for You
-							</Badge>
-							<h3 className="font-heading text-2xl font-semibold text-white md:text-3xl">
-								Perfected in every detail.
-							</h3>
-							<div className="space-y-4 text-sm leading-7 text-primary-foreground/85">
-								<p>
-									Dari incoming QC hingga final packing, setiap tahap produksi
-									disusun untuk menjaga kualitas produk dan kepercayaan
-									pelanggan.
-								</p>
-								<p>
-									Kami siap menangani kebutuhan standard part maupun custom spring
-									berdasarkan design dan spesifikasi teknis yang Anda butuhkan.
-								</p>
-							</div>
+								<ArrowLeft className="size-8" />
+							</button>
+							<button
+								type="button"
+								aria-label="Profil berikutnya"
+								onClick={() => changeSlide(1)}
+								className="absolute right-0 top-[38%] z-10 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105"
+							>
+								<ArrowRight className="size-8" />
+							</button>
+
+							<SlideVisual slide={activeSlide} />
 						</div>
 
-						<div className="grid gap-3 sm:grid-cols-2">
-							<div className="rounded-2xl border border-white/15 bg-white/10 p-4">
-								<p className="text-xs font-medium tracking-[0.18em] text-white/70 uppercase">
-									Fokus
-								</p>
-								<p className="mt-2 text-sm font-medium text-white">
-									Presisi dimensi dan konsistensi performa
-								</p>
-							</div>
-							<div className="rounded-2xl border border-white/15 bg-white/10 p-4">
-								<p className="text-xs font-medium tracking-[0.18em] text-white/70 uppercase">
-									Fleksibilitas
-								</p>
-								<p className="mt-2 text-sm font-medium text-white">
-									Support untuk kebutuhan custom manufacturing
-								</p>
-							</div>
+						<div className="flex flex-wrap items-center gap-3">
+							{profileSlides.map((slide, index) => (
+								<button
+									key={slide.id}
+									type="button"
+									onClick={() => setActiveIndex(index)}
+									className={[
+										"rounded-full px-4 py-2 text-sm font-medium transition-colors",
+										index === activeIndex
+											? "bg-[#2f58e7] text-white"
+											: "bg-white/70 text-[#506082] hover:text-[#1848d4]",
+									].join(" ")}
+								>
+									{slide.accent}
+								</button>
+							))}
 						</div>
 					</div>
+
+					<SlideBody slide={activeSlide} />
 				</div>
 			</div>
 
-			<div className="mt-10 grid gap-4 xl:grid-cols-4">
-				{coreValues.map((item) => (
-					<ValuePill key={item.title} {...item} />
-				))}
+			<div className="mt-8 flex items-center gap-3 px-2">
+				<Badge className="rounded-full bg-[#2f58e7] px-4 py-1.5 text-white hover:bg-[#2f58e7]">
+					Profil Perusahaan
+				</Badge>
+				<div className="h-px flex-1 bg-black/10" />
+			</div>
+
+			<div className="mt-4 px-2 text-sm text-[#5f6781]">
+				Geser dengan tombol panah atau klik topik untuk melihat ringkasan profil perusahaan.
 			</div>
 		</section>
 	);

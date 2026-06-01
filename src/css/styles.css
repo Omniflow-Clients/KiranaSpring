@@ -154,6 +154,10 @@
 			"Iowan Old Style", "Palatino Linotype", "URW Palladio L", serif;
 	}
 
+	.blog-prose > :first-child {
+		@apply text-lg leading-9 text-foreground/88;
+	}
+
 	.blog-prose > * + * {
 		@apply mt-6;
 	}
@@ -165,11 +169,11 @@
 	}
 
 	.blog-prose h2 {
-		@apply text-3xl;
+		@apply text-3xl text-[#1d3d9f];
 	}
 
 	.blog-prose h3 {
-		@apply text-2xl;
+		@apply text-2xl text-[#2348d8];
 	}
 
 	.blog-prose p {
@@ -203,6 +207,10 @@
 
 	.blog-prose blockquote {
 		@apply rounded-2xl border-l-4 border-primary/60 bg-primary/8 px-5 py-4 text-foreground/85 italic;
+	}
+
+	.blog-prose blockquote p {
+		@apply text-[1.02rem] leading-8 text-foreground/80;
 	}
 
 	.blog-prose a {

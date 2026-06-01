@@ -7,6 +7,7 @@ type BlogFrontmatter = {
 	tags?: string[] | string;
 	featured?: boolean;
 	slug?: string;
+	image?: string;
 };
 
 export type BlogPost = {
@@ -21,6 +22,16 @@ export type BlogPost = {
 	featured: boolean;
 	readingTimeMinutes: number;
 	content: string;
+	image: string;
+};
+
+const fallbackBlogImages: Record<string, string> = {
+	"cara-memilih-pegas-yang-tepat":
+		"https://unsplash.com/photos/6Ips_2SI-qE/download?force=true&w=1400&q=80",
+	"tanda-pegas-perlu-diganti":
+		"https://unsplash.com/photos/xWUNZVW5JOg/download?force=true&w=1400&q=80",
+	"pentingnya-heat-treatment-pada-pegas-industri":
+		"https://unsplash.com/photos/Ig5caRi_xBY/download?force=true&w=1400&q=80",
 };
 
 const markdownModules = import.meta.glob("../content/blog/*.md", {
@@ -150,6 +161,10 @@ function buildBlogPost([filePath, source]: [string, string]): BlogPost {
 		featured: frontmatter.featured ?? false,
 		readingTimeMinutes: estimateReadingTime(content),
 		content,
+		image:
+			frontmatter.image ??
+			fallbackBlogImages[fallbackSlug] ??
+			"https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80",
 	};
 }
 

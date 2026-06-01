@@ -6,6 +6,7 @@ author: Tim KiranaSpring
 category: Dasar Teknik
 tags: compression spring, manufaktur, quality control
 featured: true
+image: https://unsplash.com/photos/6Ips_2SI-qE/download?force=true&w=1400&q=80
 ---
 
 Memilih pegas untuk kebutuhan produksi tidak cukup berhenti di ukuran dan harga. Dalam praktiknya, pegas bekerja sebagai komponen yang ikut menentukan stabilitas gaya, akurasi gerak, dan umur pakai assembly secara keseluruhan.

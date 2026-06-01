@@ -3,6 +3,7 @@ import { SiteShell } from "@/layouts/site-shell";
 import { BlogSection } from "@/components/home/blog-section";
 import { CompanyProfileSection } from "@/components/home/company-profile-section";
 import { ContactSection } from "@/components/home/contact-section";
+import { GalvanizingSection } from "@/components/home/galvanizing-section";
 import { HeroSection } from "@/components/home/hero-section";
 import { IndustriesSection } from "@/components/home/industries-section";
 import { ProductsSection } from "@/components/home/products-section";
@@ -17,6 +18,7 @@ export function HomePage() {
 			<CompanyProfileSection />
 			<ProductsSection />
 			<IndustriesSection />
+			<GalvanizingSection />
 			<ProductionProcessSection />
 			<BlogSection featuredPosts={featuredPosts} />
 			<ContactSection />

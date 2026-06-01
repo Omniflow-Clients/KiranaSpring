@@ -1,12 +1,5 @@
 import { startTransition, useState } from "react";
-import {
-	ArrowLeft,
-	ArrowRight,
-	Handshake,
-	Lightbulb,
-	ShieldCheck,
-	Target,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Handshake, Lightbulb, ShieldCheck, Target } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { coreValues, missionPoints, trustReasons } from "@/data/company-profile";
 
@@ -65,6 +58,12 @@ const profileSlides: readonly CarouselSlide[] = [
 	},
 ];
 
+const directorImagePath = "/company-assets/director.png";
+const experienceImagePath = "/company-assets/experience.jpg";
+const missionImagePath = "/company-assets/vision-mission.png";
+const coreValueImagePath = "/company-assets/core-value.png";
+const commitmentImagePath = "/company-assets/commitment.png";
+
 function DirectorVisual() {
 	return (
 		<div className="relative mx-auto max-w-[34rem]">
@@ -73,12 +72,11 @@ function DirectorVisual() {
 
 			<div className="relative rounded-[1.8rem] bg-white px-8 pt-8 pb-6 shadow-[0_20px_50px_rgba(156,156,156,0.15)]">
 				<div className="mx-auto flex h-[33rem] max-w-[20rem] items-end justify-center overflow-hidden rounded-[0.3rem] bg-[#3559e4]">
-					<div className="profile-portrait relative h-full w-full">
-						<div className="absolute inset-x-7 bottom-0 top-0 overflow-hidden">
-							<div className="profile-portrait__glow" />
-							<div className="profile-portrait__figure" />
-						</div>
-					</div>
+					<img
+						src={directorImagePath}
+						alt="Stefani R. Hudyono"
+						className="h-full w-full object-cover object-center"
+					/>
 				</div>
 
 				<div className="relative z-10 -mt-8 ml-auto w-fit rounded-[0.2rem] bg-white px-7 py-4 shadow-[0_12px_30px_rgba(0,0,0,0.08)]">
@@ -93,12 +91,18 @@ function DirectorVisual() {
 	);
 }
 
-function SpringVisual() {
+function FramedImageVisual({
+	src,
+	alt,
+	objectClassName = "object-cover",
+}: {
+	src: string;
+	alt: string;
+	objectClassName?: string;
+}) {
 	return (
-		<div className="relative mx-auto flex h-[38rem] w-full max-w-[34rem] items-center justify-center overflow-hidden rounded-[1.8rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)]">
-			<div className="absolute inset-y-0 left-[18%] w-[48%] bg-[#cf9e31]" />
-			<div className="absolute inset-y-5 left-[29%] w-[41%] bg-black/14" />
-			<div className="spring-machine absolute left-[3%] top-[14%] h-[78%] w-[74%]" />
+		<div className="relative mx-auto h-[38rem] w-full max-w-[34rem] overflow-hidden rounded-[1.8rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)]">
+			<img src={src} alt={alt} className={["h-full w-full", objectClassName].join(" ")} />
 		</div>
 	);
 }
@@ -142,40 +146,38 @@ function AccentTitle({
 function SlideVisual({ slide }: { slide: CarouselSlide }) {
 	switch (slide.type) {
 		case "intro":
-		case "experience":
 			return <DirectorVisual />;
+		case "experience":
+			return (
+				<FramedImageVisual
+					src={experienceImagePath}
+					alt="Pengalaman Prima Kirana Spring"
+					objectClassName="h-full w-full object-cover"
+				/>
+			);
 		case "mission":
-			return <SpringVisual />;
+			return (
+				<FramedImageVisual
+					src={missionImagePath}
+					alt="Visi dan misi Prima Kirana Spring"
+					objectClassName="h-full w-full object-cover object-left"
+				/>
+			);
 		case "values":
 			return (
-				<div className="relative mx-auto flex h-[38rem] w-full max-w-[34rem] items-center justify-center overflow-hidden rounded-[1.8rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)]">
-					<div className="core-spring absolute inset-x-0 top-0 h-[31%]" />
-					<div className="absolute inset-x-0 top-[31%] h-[20%] bg-[#4f4f4f]" />
-					<div className="absolute inset-x-0 bottom-0 grid h-[49%] grid-cols-2 gap-px bg-[#dcdcdc] p-8">
-						<div className="rounded-[1.2rem] bg-[#2f58e7]" />
-						<div className="rounded-[1.2rem] bg-[#2f58e7]" />
-						<div className="rounded-[1.2rem] bg-[#2f58e7]" />
-						<div className="rounded-[1.2rem] bg-[#2f58e7]" />
-					</div>
-				</div>
+				<FramedImageVisual
+					src={coreValueImagePath}
+					alt="Core value Prima Kirana Spring"
+					objectClassName="h-full w-full object-cover"
+				/>
 			);
 		case "commitment":
 			return (
-				<div className="relative mx-auto flex h-[38rem] w-full max-w-[34rem] items-center justify-center overflow-hidden rounded-[1.8rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)]">
-					<div className="commitment-waves absolute inset-0" />
-					<div className="absolute left-9 top-9 rounded-full bg-[#2f58e7]/12 px-4 py-2 text-sm font-semibold text-[#2f58e7]">
-						Quality First
-					</div>
-					<div className="absolute right-10 top-16 rounded-full bg-[#ffd32c]/90 px-4 py-2 text-sm font-semibold text-[#1848d4]">
-						Trusted Process
-					</div>
-					<div className="absolute bottom-10 left-8 right-8 rounded-[1.6rem] bg-[#2f58e7] p-7 text-white">
-						<p className="text-2xl font-semibold">Built for consistency.</p>
-						<p className="mt-3 text-base leading-7 text-white/85">
-							Presisi, kontrol kualitas, dan respons terhadap kebutuhan custom.
-						</p>
-					</div>
-				</div>
+				<FramedImageVisual
+					src={commitmentImagePath}
+					alt="Komitmen kualitas Prima Kirana Spring"
+					objectClassName="h-full w-full object-cover object-left"
+				/>
 			);
 	}
 }
@@ -305,10 +307,7 @@ export function CompanyProfileSection() {
 	};
 
 	return (
-		<section
-			id="profil"
-			className="mx-auto w-full max-w-screen-[2048px] px-1 pb-10 md:px-2 md:pb-14"
-		>
+		<section id="profil" className="w-full">
 			<div className="profile-panel relative overflow-hidden bg-[#e5e5e5] px-6 py-8 md:px-10 md:py-10 lg:px-14 lg:py-12">
 				<div className="relative grid gap-10 xl:grid-cols-[0.9fr_1.1fr] xl:items-start">
 					<div className="space-y-6">
@@ -354,17 +353,17 @@ export function CompanyProfileSection() {
 
 					<SlideBody slide={activeSlide} />
 				</div>
-			</div>
 
-			<div className="mt-8 flex items-center gap-3 px-2">
-				<Badge className="rounded-full bg-[#2f58e7] px-4 py-1.5 text-white hover:bg-[#2f58e7]">
-					Profil Perusahaan
-				</Badge>
-				<div className="h-px flex-1 bg-black/10" />
-			</div>
+				<div className="mt-8 flex items-center gap-3">
+					<Badge className="rounded-full bg-[#2f58e7] px-4 py-1.5 text-white hover:bg-[#2f58e7]">
+						Profil Perusahaan
+					</Badge>
+					<div className="h-px flex-1 bg-black/10" />
+				</div>
 
-			<div className="mt-4 px-2 text-sm text-[#5f6781]">
-				Geser dengan tombol panah atau klik topik untuk melihat ringkasan profil perusahaan.
+				<div className="mt-4 text-sm text-[#5f6781]">
+					Geser dengan tombol panah atau klik topik untuk melihat ringkasan profil perusahaan.
+				</div>
 			</div>
 		</section>
 	);

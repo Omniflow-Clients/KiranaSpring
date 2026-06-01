@@ -6,6 +6,7 @@ author: Tim KiranaSpring
 category: Maintenance
 tags: maintenance, inspeksi, quality control
 featured: true
+image: https://unsplash.com/photos/xWUNZVW5JOg/download?force=true&w=1400&q=80
 ---
 
 Dalam banyak kasus, pegas tidak langsung patah saat mulai bermasalah. Kerusakannya muncul bertahap dan sering terlihat dari perubahan performa mesin. Kalau tanda-tandanya dikenali lebih cepat, downtime bisa jauh lebih kecil.

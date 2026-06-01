@@ -18,11 +18,15 @@ function HighlightCard({ value, label }: HeroHighlight) {
 
 export function HeroSection() {
 	return (
-		<section className="mx-auto w-full max-w-screen-[2048px] px-1 pb-1 md:px-2">
+		<section className="w-full">
 			<div className="grid min-h-[calc(100svh-8.8rem)] grid-cols-1 overflow-hidden bg-[#d9d9d9] lg:grid-cols-[1.05fr_1.45fr]">
 				<div className="relative isolate min-h-[28rem] overflow-hidden px-6 py-10 md:px-8 md:py-12 lg:min-h-[48rem] lg:px-12 lg:py-16">
-					<div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_30%,rgba(255,255,255,0.94),rgba(255,255,255,0.48)_36%,transparent_72%),linear-gradient(90deg,rgba(255,255,255,0.6),rgba(255,255,255,0.18)_52%,rgba(255,255,255,0.6)_100%)]" />
-					<div className="hero-machine absolute inset-0 opacity-90" />
+					<img
+						src="/home-assets/hero-background.jpg"
+						alt="Mesin produksi pegas"
+						className="absolute inset-0 h-full w-full object-cover grayscale"
+					/>
+					<div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_30%,rgba(255,255,255,0.95),rgba(255,255,255,0.42)_36%,transparent_72%),linear-gradient(90deg,rgba(255,255,255,0.76),rgba(255,255,255,0.18)_52%,rgba(255,255,255,0.7)_100%)]" />
 					<div className="absolute -left-8 bottom-6 h-48 w-48 rounded-full border-[18px] border-white/45" />
 					<div className="absolute right-8 top-10 h-28 w-28 rounded-full border-[14px] border-white/35" />
 

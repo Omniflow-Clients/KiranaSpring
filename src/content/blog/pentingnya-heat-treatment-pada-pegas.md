@@ -6,6 +6,7 @@ author: Tim KiranaSpring
 category: Proses Produksi
 tags: heat treatment, material, manufaktur
 featured: false
+image: https://unsplash.com/photos/Ig5caRi_xBY/download?force=true&w=1400&q=80
 ---
 
 Setelah wire dibentuk menjadi pegas, material masih menyimpan tegangan sisa. Di titik ini, pegas memang sudah berbentuk, tetapi belum tentu stabil untuk dipakai dalam beban berulang. Di sinilah proses heat treatment menjadi sangat penting.

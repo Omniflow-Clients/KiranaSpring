@@ -56,44 +56,44 @@ export function ProductsSection() {
 
 	return (
 		<section id="produk" className="w-full">
-			<div className="overflow-hidden bg-[#3f5fe2] px-6 py-12 text-white md:px-10 lg:px-16 lg:py-16">
-				<h2 className="mx-auto max-w-[18ch] text-center font-heading text-4xl leading-[1.06] font-light tracking-tight md:text-6xl">
+			<div className="overflow-hidden bg-[#3f5fe2] px-4 py-10 text-white sm:px-6 sm:py-12 md:px-10 lg:px-16 lg:py-16">
+				<h2 className="mx-auto max-w-[14ch] text-center font-heading text-[2.3rem] leading-[1.06] font-light tracking-tight sm:max-w-[16ch] sm:text-4xl md:max-w-[18ch] md:text-6xl">
 					Designed for you, <span className="font-semibold">PERFECTED</span> in
 					every details.
 				</h2>
 
-				<div className="mx-auto mt-14 max-w-6xl">
-					<div className="relative overflow-hidden rounded-[2.2rem] bg-white/10 p-6 shadow-[0_24px_50px_rgba(20,35,111,0.18)] backdrop-blur-sm md:p-8 lg:p-10">
+				<div className="mx-auto mt-10 max-w-6xl sm:mt-14">
+					<div className="relative overflow-hidden rounded-[1.8rem] bg-white/10 p-4 shadow-[0_24px_50px_rgba(20,35,111,0.18)] backdrop-blur-sm sm:p-6 md:rounded-[2.2rem] md:p-8 lg:p-10">
 						<div className="pointer-events-none absolute -left-10 top-16 h-40 w-40 rounded-full bg-white/8 blur-2xl" />
 						<div className="pointer-events-none absolute bottom-0 right-0 h-52 w-52 rounded-full bg-[#2848cf]/60 blur-2xl" />
 
 						<div className="relative grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
-							<div className="relative flex items-center justify-center px-14 py-6 md:px-18">
+							<div className="relative flex items-center justify-center px-12 py-4 sm:px-14 sm:py-6 md:px-18">
 								<button
 									type="button"
 									aria-label="Produk sebelumnya"
 									onClick={() => changeSlide(-1)}
-									className="absolute left-0 top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105"
+									className="absolute left-0 top-[42%] z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:top-1/2 sm:h-14 sm:w-14"
 								>
-									<ArrowLeft className="size-7" />
+									<ArrowLeft className="size-6 sm:size-7" />
 								</button>
 
-								<div className="flex h-[20rem] w-[20rem] items-center justify-center rounded-full bg-[radial-gradient(circle_at_32%_28%,#6f89ff_0%,#4565ec_58%,#3554de_100%)] shadow-[0_28px_44px_rgba(20,35,111,0.24)] md:h-[24rem] md:w-[24rem]">
+								<div className="flex h-[15rem] w-[15rem] items-center justify-center rounded-full bg-[radial-gradient(circle_at_32%_28%,#6f89ff_0%,#4565ec_58%,#3554de_100%)] shadow-[0_28px_44px_rgba(20,35,111,0.24)] sm:h-[18rem] sm:w-[18rem] md:h-[24rem] md:w-[24rem]">
 									{activeSlide.image ? (
 										<img
 											src={activeSlide.image}
 											alt={activeSlide.title}
-											className="h-[15rem] w-[15rem] object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.28)] md:h-[19rem] md:w-[19rem]"
+											className="h-[10rem] w-[10rem] object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.28)] sm:h-[13rem] sm:w-[13rem] md:h-[19rem] md:w-[19rem]"
 										/>
 									) : (
-										<div className="flex h-[15rem] w-[15rem] flex-col items-center justify-center rounded-[2rem] border border-white/18 bg-white/12 p-6 text-center md:h-[18rem] md:w-[18rem]">
-											<div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/14">
+										<div className="flex h-[10rem] w-[10rem] flex-col items-center justify-center rounded-[1.5rem] border border-white/18 bg-white/12 p-4 text-center sm:h-[13rem] sm:w-[13rem] sm:p-5 md:h-[18rem] md:w-[18rem] md:rounded-[2rem] md:p-6">
+											<div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/14 md:h-16 md:w-16">
 												<Sparkles className="size-8 text-[#ffd54a]" />
 											</div>
-											<p className="mt-5 text-xl font-semibold text-white">
+											<p className="mt-4 text-lg font-semibold text-white md:mt-5 md:text-xl">
 												Custom Spring
 											</p>
-											<p className="mt-2 text-sm leading-6 text-white/80">
+											<p className="mt-2 text-xs leading-5 text-white/80 sm:text-sm sm:leading-6">
 												Sesuai desain, dimensi, material, dan kebutuhan aplikasi.
 											</p>
 										</div>
@@ -104,27 +104,27 @@ export function ProductsSection() {
 									type="button"
 									aria-label="Produk berikutnya"
 									onClick={() => changeSlide(1)}
-									className="absolute right-0 top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105"
+									className="absolute right-0 top-[42%] z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:top-1/2 sm:h-14 sm:w-14"
 								>
-									<ArrowRight className="size-7" />
+									<ArrowRight className="size-6 sm:size-7" />
 								</button>
 							</div>
 
-							<div className="space-y-5 lg:pl-4">
+							<div className="space-y-4 sm:space-y-5 lg:pl-4">
 								<p className="text-sm font-medium tracking-[0.22em] text-[#d8e1ff] uppercase">
 									Produk Utama
 								</p>
-								<h3 className="font-heading text-3xl leading-tight font-semibold md:text-5xl">
+								<h3 className="font-heading text-[2rem] leading-tight font-semibold sm:text-3xl md:text-5xl">
 									{activeSlide.title}
 								</h3>
-								<p className="max-w-[34rem] text-base leading-8 text-white/84 md:text-lg">
+								<p className="max-w-[34rem] text-sm leading-7 text-white/84 sm:text-base md:text-lg">
 									{activeSlide.description}
 								</p>
-								<div className="rounded-[1.6rem] border border-white/14 bg-white/10 px-6 py-5">
+								<div className="rounded-[1.4rem] border border-white/14 bg-white/10 px-5 py-4 sm:rounded-[1.6rem] sm:px-6 sm:py-5">
 									<p className="text-sm font-medium tracking-[0.18em] text-[#d8e1ff] uppercase">
 										Aplikasi
 									</p>
-									<p className="mt-3 text-base leading-8 text-white/86 md:text-lg">
+									<p className="mt-3 text-sm leading-7 text-white/86 sm:text-base md:text-lg">
 										{activeSlide.accent}
 									</p>
 								</div>
@@ -132,14 +132,14 @@ export function ProductsSection() {
 						</div>
 					</div>
 
-					<div className="mt-6 flex flex-wrap justify-center gap-3">
+					<div className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-3">
 						{productSlides.map((slide, index) => (
 							<button
 								key={slide.title}
 								type="button"
 								onClick={() => setActiveIndex(index)}
 								className={[
-									"rounded-full px-5 py-3 text-sm font-medium transition-colors md:text-base",
+									"rounded-full px-4 py-2.5 text-xs font-medium transition-colors sm:px-5 sm:py-3 sm:text-sm md:text-base",
 									index === activeIndex
 										? "bg-white text-[#2f58e7]"
 										: "bg-white/12 text-white/86 hover:bg-white/18",

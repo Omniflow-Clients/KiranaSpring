@@ -86,14 +86,14 @@ export function ProductsSection() {
 											className="h-[10rem] w-[10rem] object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.28)] sm:h-[13rem] sm:w-[13rem] md:h-[19rem] md:w-[19rem]"
 										/>
 									) : (
-										<div className="flex h-[10rem] w-[10rem] flex-col items-center justify-center rounded-[1.5rem] border border-white/18 bg-white/12 p-4 text-center sm:h-[13rem] sm:w-[13rem] sm:p-5 md:h-[18rem] md:w-[18rem] md:rounded-[2rem] md:p-6">
-											<div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/14 md:h-16 md:w-16">
-												<Sparkles className="size-8 text-[#ffd54a]" />
+										<div className="flex h-[10rem] w-[10rem] flex-col items-center justify-center rounded-[1.35rem] border border-white/18 bg-white/12 px-3 py-3 text-center sm:h-[13rem] sm:w-[13rem] sm:rounded-[1.5rem] sm:px-4 sm:py-4 md:h-[18rem] md:w-[18rem] md:rounded-[2rem] md:px-6 md:py-6">
+											<div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/14 sm:h-12 sm:w-12 md:h-16 md:w-16">
+												<Sparkles className="size-6 text-[#ffd54a] sm:size-7 md:size-8" />
 											</div>
-											<p className="mt-4 text-lg font-semibold text-white md:mt-5 md:text-xl">
+											<p className="mt-3 text-[0.72rem] leading-[1.15] font-semibold text-white sm:mt-4 sm:text-[0.95rem] md:mt-5 md:text-xl">
 												Custom Spring
 											</p>
-											<p className="mt-2 text-xs leading-5 text-white/80 sm:text-sm sm:leading-6">
+											<p className="mt-1.5 text-[0.52rem] leading-[1.35] text-white/80 sm:mt-2 sm:text-[0.68rem] sm:leading-5 md:text-sm md:leading-6">
 												Sesuai desain, dimensi, material, dan kebutuhan aplikasi.
 											</p>
 										</div>

@@ -68,12 +68,12 @@ export function ProductsSection() {
 						<div className="pointer-events-none absolute bottom-0 right-0 h-52 w-52 rounded-full bg-[#2848cf]/60 blur-2xl" />
 
 						<div className="relative grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
-							<div className="relative flex items-center justify-center px-12 py-4 sm:px-14 sm:py-6 md:px-18">
+							<div className="relative flex items-center justify-center px-10 py-4 sm:px-14 sm:py-6 md:px-18">
 								<button
 									type="button"
 									aria-label="Produk sebelumnya"
 									onClick={() => changeSlide(-1)}
-									className="absolute left-0 top-[42%] z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:top-1/2 sm:h-14 sm:w-14"
+									className="absolute left-1 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:left-0 sm:top-1/2 sm:h-14 sm:w-14"
 								>
 									<ArrowLeft className="size-6 sm:size-7" />
 								</button>
@@ -104,7 +104,7 @@ export function ProductsSection() {
 									type="button"
 									aria-label="Produk berikutnya"
 									onClick={() => changeSlide(1)}
-									className="absolute right-0 top-[42%] z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:top-1/2 sm:h-14 sm:w-14"
+									className="absolute right-1 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:right-0 sm:top-1/2 sm:h-14 sm:w-14"
 								>
 									<ArrowRight className="size-6 sm:size-7" />
 								</button>

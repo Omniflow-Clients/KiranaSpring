@@ -309,6 +309,19 @@ export function CompanyProfileSection() {
 	return (
 		<section id="profil" className="w-full">
 			<div className="profile-panel relative overflow-hidden bg-[#e5e5e5] px-4 py-8 sm:px-6 md:px-10 md:py-10 lg:px-14 lg:py-12">
+				<div className="mb-6 sm:mb-8">
+					<div className="flex items-center gap-3">
+						<Badge className="rounded-full bg-[#2f58e7] px-4 py-1.5 text-white hover:bg-[#2f58e7]">
+							Profil Perusahaan
+						</Badge>
+						<div className="h-px flex-1 bg-black/10" />
+					</div>
+
+					<div className="mt-4 text-xs text-[#5f6781] sm:text-sm">
+						Geser dengan tombol panah atau klik topik untuk melihat ringkasan profil perusahaan.
+					</div>
+				</div>
+
 				<div className="relative grid gap-8 lg:gap-10 xl:grid-cols-[0.9fr_1.1fr] xl:items-start">
 					<div className="space-y-5 sm:space-y-6">
 						<div className="relative mx-auto max-w-[40rem] px-6 sm:px-8 lg:px-14">
@@ -352,17 +365,6 @@ export function CompanyProfileSection() {
 					</div>
 
 					<SlideBody slide={activeSlide} />
-				</div>
-
-				<div className="mt-8 flex items-center gap-3">
-					<Badge className="rounded-full bg-[#2f58e7] px-4 py-1.5 text-white hover:bg-[#2f58e7]">
-						Profil Perusahaan
-					</Badge>
-					<div className="h-px flex-1 bg-black/10" />
-				</div>
-
-				<div className="mt-4 text-xs text-[#5f6781] sm:text-sm">
-					Geser dengan tombol panah atau klik topik untuk melihat ringkasan profil perusahaan.
 				</div>
 			</div>
 		</section>

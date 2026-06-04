@@ -55,43 +55,46 @@ export function BlogPostPage() {
 
 					<div className="grid gap-10 xl:grid-cols-[minmax(0,1.35fr)_380px] xl:items-start">
 						<article className="space-y-8">
-							<header className="overflow-hidden rounded-[2.5rem] border border-[#cdd8ff] bg-white shadow-[0_24px_48px_rgba(80,100,170,0.09)]">
-								<div className="relative aspect-[16/8] overflow-hidden bg-[#2348d8]/12">
-									<img
-										src={post.image}
-										alt={post.title}
-										className="h-full w-full object-cover"
-									/>
-									<div className="absolute inset-0 bg-gradient-to-t from-[#112763]/86 via-[#112763]/18 to-transparent" />
-									<div className="absolute inset-x-0 bottom-0 p-6 md:p-8 lg:p-10">
-										<div className="mb-4 flex flex-wrap items-center gap-3">
-											<Badge className="rounded-full bg-[#2348d8] px-4 py-1.5 text-white hover:bg-[#2348d8]">
-												{post.category}
+							<header className="space-y-5">
+								<div className="rounded-[2rem] border border-[#cdd8ff] bg-white px-5 py-6 shadow-[0_24px_48px_rgba(80,100,170,0.09)] sm:px-6 sm:py-7 md:rounded-[2.5rem] md:px-8 md:py-8 lg:px-10">
+									<div className="mb-4 flex flex-wrap items-center gap-3">
+										<Badge className="rounded-full bg-[#2348d8] px-4 py-1.5 text-white hover:bg-[#2348d8]">
+											{post.category}
+										</Badge>
+										{post.tags.map((tag) => (
+											<Badge
+												key={tag}
+												variant="outline"
+												className="rounded-full border-[#cdd8ff] bg-[#f6f8ff] px-3 py-1 text-xs text-[#2348d8]"
+											>
+												{tag}
 											</Badge>
-											{post.tags.map((tag) => (
-												<Badge
-													key={tag}
-													variant="outline"
-													className="rounded-full border-white/30 bg-white/10 px-3 py-1 text-xs text-white backdrop-blur-sm"
-												>
-													{tag}
-												</Badge>
-											))}
-										</div>
-										<div className="max-w-4xl space-y-4">
-											<h1 className="font-heading text-4xl leading-[1.04] font-semibold tracking-tight text-white md:text-5xl xl:text-[3.65rem]">
-												{post.title}
-											</h1>
-											<p className="max-w-3xl text-lg leading-8 text-white/86">
-												{post.description}
-											</p>
-										</div>
-										<PostMeta
-											date={post.formattedDate}
-											readingTimeMinutes={post.readingTimeMinutes}
-											author={post.author}
-											className="mt-6 text-white/78 [&_svg]:text-[#ffd652]"
+										))}
+									</div>
+									<div className="max-w-4xl space-y-4">
+										<h1 className="font-heading text-[2rem] leading-[1.08] font-semibold tracking-tight text-[#1d3d9f] sm:text-[2.4rem] md:text-5xl xl:text-[3.65rem]">
+											{post.title}
+										</h1>
+										<p className="max-w-3xl text-base leading-7 text-[#66729f] sm:text-lg sm:leading-8">
+											{post.description}
+										</p>
+									</div>
+									<PostMeta
+										date={post.formattedDate}
+										readingTimeMinutes={post.readingTimeMinutes}
+										author={post.author}
+										className="mt-5 text-[#66729f] [&_svg]:text-[#2348d8]"
+									/>
+								</div>
+
+								<div className="overflow-hidden rounded-[2rem] border border-[#cdd8ff] bg-white shadow-[0_24px_48px_rgba(80,100,170,0.09)] md:rounded-[2.5rem]">
+									<div className="relative aspect-[16/10] overflow-hidden bg-[#2348d8]/12 md:aspect-[16/8]">
+										<img
+											src={post.image}
+											alt={post.title}
+											className="h-full w-full object-cover"
 										/>
+										<div className="absolute inset-0 bg-gradient-to-t from-[#112763]/40 via-[#112763]/8 to-transparent" />
 									</div>
 								</div>
 							</header>

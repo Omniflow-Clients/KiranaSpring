@@ -30,7 +30,7 @@ export function HeroSection() {
 					<div className="absolute -left-10 bottom-4 h-32 w-32 rounded-full border-[14px] border-white/45 sm:-left-8 sm:bottom-6 sm:h-48 sm:w-48 sm:border-[18px]" />
 					<div className="absolute right-5 top-8 h-20 w-20 rounded-full border-[10px] border-white/35 sm:right-8 sm:top-10 sm:h-28 sm:w-28 sm:border-[14px]" />
 
-					<div className="relative z-10 mx-auto flex h-full max-w-[44rem] items-start lg:items-center">
+					<div className="relative z-10 mx-auto flex h-full max-w-[44rem] items-center lg:items-center">
 						<h1 className="max-w-[12ch] text-[2rem] leading-[0.98] font-semibold tracking-tight text-[#1848d4] sm:max-w-[14ch] sm:text-[2.45rem] md:max-w-[20ch] md:text-[3.35rem] lg:text-[4.1rem] xl:text-[4.7rem]">
 							Designed for you,
 							<br />

@@ -278,7 +278,7 @@ function SlideBody({ slide }: { slide: CarouselSlide }) {
 				</p>
 			) : null}
 
-			<div className="max-w-[52rem] space-y-5 text-[0.98rem] leading-[1.25] text-black sm:space-y-6 sm:text-[1.1rem] sm:leading-[1.2] md:text-[1.35rem] xl:text-[1.75rem]">
+			<div className="max-w-[52rem] space-y-5 text-[0.98rem] leading-[1.25] text-black sm:space-y-6 sm:text-[1.02rem] sm:leading-[1.2] md:text-[1.15rem] xl:text-[1.45rem]">
 				{slide.description?.map((paragraph) => (
 					<p key={paragraph}>{paragraph}</p>
 				))}
@@ -307,7 +307,7 @@ export function CompanyProfileSection() {
 	};
 
 	return (
-		<section id="profil" className="w-full">
+		<section id="profil" className="w-full scroll-mt-20 sm:scroll-mt-24 xl:scroll-mt-28">
 			<div className="profile-panel relative overflow-hidden bg-[#e5e5e5] px-4 py-8 sm:px-6 md:px-10 md:py-10 lg:px-14 lg:py-12">
 				<div className="mb-6 sm:mb-8">
 					<div className="flex items-center gap-3">

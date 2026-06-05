@@ -1,6 +1,6 @@
-import { Menu, X } from "lucide-react";
+import { Instagram, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 function SectionAnchor({
@@ -13,13 +13,13 @@ function SectionAnchor({
 	onClick?: () => void;
 }) {
 	return (
-		<a
-			href={href}
+		<Link
+			to={href}
 			onClick={onClick}
 			className="rounded-[1.2rem] px-4 py-3 text-sm font-medium text-black transition-colors hover:text-primary sm:text-base"
 		>
 			{children}
-		</a>
+		</Link>
 	);
 }
 
@@ -55,6 +55,7 @@ function NavItem({
 
 export function SiteShell({ children }: { children: ReactNode }) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const navigate = useNavigate();
 
 	const closeMobileMenu = () => {
 		setIsMobileMenuOpen(false);
@@ -62,7 +63,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
 	const handleMobileContactClick = () => {
 		closeMobileMenu();
-		window.location.href = "/#kontak";
+		navigate("/#kontak");
 	};
 
 	return (
@@ -93,7 +94,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 								size="lg"
 								className="ml-4 h-auto rounded-[1.2rem] bg-[#2f58e7] px-10 py-6 text-base font-medium text-white hover:bg-[#244be0]"
 							>
-								<a href="/#kontak">Hubungi Kami</a>
+								<Link to="/#kontak">Hubungi Kami</Link>
 							</Button>
 						</nav>
 
@@ -151,15 +152,75 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
 			<main>{children}</main>
 
-			<footer className="w-full border-t border-white/10 bg-[#0f2f97]">
-				<div className="mx-auto flex w-full max-w-[1520px] flex-col gap-4 px-6 py-7 text-sm text-white/72 md:flex-row md:items-center md:justify-between lg:px-10 xl:px-14">
-					<div className="space-y-1">
-						<p className="font-medium text-white">PT Prima Kirana Spring</p>
-						<p>Jl. Lingkar Utara UMK (timur Djarum Oasis), Kudus 59325</p>
+			<footer id="kontak" className="w-full scroll-mt-20 bg-[#2f58e7] sm:scroll-mt-24 xl:scroll-mt-28">
+				<div className="mx-auto grid w-full max-w-[1680px] gap-8 px-5 py-10 text-white sm:px-6 md:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:px-12 lg:py-12 xl:px-16">
+					<div className="flex justify-center lg:justify-start">
+						<div className="rounded-[2rem] bg-white p-5 shadow-[0_22px_40px_rgba(17,34,101,0.16)]">
+							<img
+								src="/home-assets/navbar-logo.png"
+								alt="PT Prima Kirana Spring"
+								className="h-[5.6rem] w-auto object-contain sm:h-[6.5rem] md:h-[7.2rem]"
+							/>
+						</div>
 					</div>
-					<div className="flex flex-col gap-1 md:items-end">
-						<p>prima.kirana.spring@gmail.com</p>
-						<p>081-330-339-909</p>
+
+					<div className="space-y-2 text-center lg:text-left">
+						<p className="text-[1.6rem] font-semibold tracking-tight text-white sm:text-[1.9rem]">
+							PT Prima Kirana Spring
+						</p>
+						<p className="text-base leading-8 text-white/92 sm:text-lg">
+							Jl. Lingkar Utara UMK (timur Djarum Oasis)
+							<br />
+							Kudus 59325
+						</p>
+						<p className="text-base leading-8 text-white/92 sm:text-lg">
+							Telepon: 081-330-339-909
+							<br />
+							Email: prima.kirana.spring@gmail.com
+						</p>
+					</div>
+
+					<div className="flex flex-col items-center gap-5 lg:items-end">
+						<div className="rounded-[1.35rem] bg-white px-6 py-3 text-center shadow-[0_18px_36px_rgba(17,34,101,0.12)]">
+							<p className="text-[1.25rem] font-semibold text-[#2f58e7] sm:text-[1.45rem]">
+								Terhubung dengan kami
+							</p>
+						</div>
+
+						<div className="flex flex-wrap items-center justify-center gap-4 text-white lg:justify-end">
+							<a
+								href="https://www.instagram.com/prima.kirana.spring"
+								target="_blank"
+								rel="noreferrer"
+								aria-label="Instagram Prima Kirana Spring"
+								className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+							>
+								<Instagram className="size-6" />
+							</a>
+							<a
+								href="tel:081330339909"
+								aria-label="Hubungi Prima Kirana Spring"
+								className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+							>
+								<Phone className="size-6" />
+							</a>
+							<a
+								href="https://maps.google.com/?q=Jl.%20Lingkar%20Utara%20UMK%20timur%20Djarum%20Oasis%20Kudus%2059325"
+								target="_blank"
+								rel="noreferrer"
+								aria-label="Lokasi Prima Kirana Spring"
+								className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+							>
+								<MapPin className="size-6" />
+							</a>
+							<a
+								href="mailto:prima.kirana.spring@gmail.com"
+								aria-label="Email Prima Kirana Spring"
+								className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+							>
+								<Mail className="size-6" />
+							</a>
+						</div>
 					</div>
 				</div>
 			</footer>

@@ -2,7 +2,6 @@ import { getFeaturedBlogPosts } from "@/lib/blog";
 import { SiteShell } from "@/layouts/site-shell";
 import { BlogSection } from "@/components/home/blog-section";
 import { CompanyProfileSection } from "@/components/home/company-profile-section";
-import { ContactSection } from "@/components/home/contact-section";
 import { GalvanizingSection } from "@/components/home/galvanizing-section";
 import { HeroSection } from "@/components/home/hero-section";
 import { IndustriesSection } from "@/components/home/industries-section";
@@ -21,7 +20,6 @@ export function HomePage() {
 			<GalvanizingSection />
 			<ProductionProcessSection />
 			<BlogSection featuredPosts={featuredPosts} />
-			<ContactSection />
 		</SiteShell>
 	);
 }

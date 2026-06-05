@@ -55,7 +55,7 @@ export function ProductsSection() {
 	};
 
 	return (
-		<section id="produk" className="w-full">
+		<section id="produk" className="w-full scroll-mt-20 sm:scroll-mt-24 xl:scroll-mt-28">
 			<div className="overflow-hidden bg-[#3f5fe2] px-4 py-10 text-white sm:px-6 sm:py-12 md:px-10 lg:px-16 lg:py-16">
 				<h2 className="mx-auto max-w-[14ch] text-center font-heading text-[2.3rem] leading-[1.06] font-light tracking-tight sm:max-w-[16ch] sm:text-4xl md:max-w-[18ch] md:text-6xl">
 					Designed for you, <span className="font-semibold">PERFECTED</span> in

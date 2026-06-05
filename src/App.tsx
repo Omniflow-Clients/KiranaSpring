@@ -6,10 +6,25 @@ import { HomePage } from "@/pages/home-page";
 import { NotFoundPage } from "@/pages/not-found-page";
 
 function ScrollToTop() {
-	const { pathname } = useLocation();
+	const { pathname, hash } = useLocation();
 
 	useEffect(() => {
 		if (!pathname) {
+			return;
+		}
+
+		if (hash) {
+			window.requestAnimationFrame(() => {
+				const target = document.getElementById(hash.replace("#", ""));
+				if (!target) {
+					return;
+				}
+
+				target.scrollIntoView({
+					behavior: "smooth",
+					block: "start",
+				});
+			});
 			return;
 		}
 
@@ -18,7 +33,7 @@ function ScrollToTop() {
 			left: 0,
 			behavior: "smooth",
 		});
-	}, [pathname]);
+	}, [pathname, hash]);
 
 	return null;
 }

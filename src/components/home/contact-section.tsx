@@ -96,7 +96,7 @@ export function ContactSection() {
 	return (
 		<section
 			id="kontak"
-			className="w-full overflow-hidden bg-[linear-gradient(135deg,#0d37bf_0%,#214ce0_42%,#143bbf_100%)]"
+			className="w-full scroll-mt-20 overflow-hidden bg-[linear-gradient(135deg,#0d37bf_0%,#214ce0_42%,#143bbf_100%)] sm:scroll-mt-24 xl:scroll-mt-28"
 		>
 			<div className="mx-auto grid w-full max-w-[1520px] gap-8 px-4 py-12 sm:px-6 sm:py-16 lg:px-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] xl:gap-12 xl:px-14 xl:py-22">
 				<div className="space-y-7">

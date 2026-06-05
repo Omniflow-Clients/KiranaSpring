@@ -10,7 +10,7 @@ export function BlogSection({
 	featuredPosts: readonly BlogPost[];
 }) {
 	return (
-		<section className="w-full">
+		<section id="insight-teknis" className="w-full scroll-mt-20 sm:scroll-mt-24 xl:scroll-mt-28">
 			<div className="overflow-hidden bg-[#e7e7e5] px-6 py-14 md:px-10 lg:px-16 lg:py-18">
 				<div className="grid gap-10 xl:grid-cols-[0.88fr_1.12fr] xl:items-start">
 					<div className="flex h-full flex-col justify-between gap-8">

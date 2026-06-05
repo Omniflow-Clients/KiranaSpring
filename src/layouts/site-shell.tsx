@@ -3,6 +3,32 @@ import { useState, type ReactNode } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
+function TikTokIcon({ className = "size-6" }: { className?: string }) {
+	return (
+		<svg
+			viewBox="0 0 24 24"
+			fill="currentColor"
+			aria-hidden="true"
+			className={className}
+		>
+			<path d="M19.59 6.69A4.83 4.83 0 0 1 16 5.13V16a6 6 0 1 1-6-6c.2 0 .39.02.58.05v3.03a3 3 0 1 0 2.42 2.95V2h3.01a4.85 4.85 0 0 0 4.58 4.58v3.11Z" />
+		</svg>
+	);
+}
+
+function WhatsAppIcon({ className = "size-6" }: { className?: string }) {
+	return (
+		<svg
+			viewBox="0 0 24 24"
+			fill="currentColor"
+			aria-hidden="true"
+			className={className}
+		>
+			<path d="M19.05 4.94A9.9 9.9 0 0 0 12 2a9.94 9.94 0 0 0-8.6 14.92L2 22l5.23-1.37A9.94 9.94 0 1 0 19.05 4.94Zm-7.05 14a7.94 7.94 0 0 1-4.04-1.1l-.29-.17-3.1.81.83-3.02-.19-.31A7.94 7.94 0 1 1 12 18.94Zm4.35-5.96c-.24-.12-1.4-.69-1.62-.77-.22-.08-.37-.12-.53.12-.16.24-.61.77-.75.93-.14.16-.27.18-.51.06-.24-.12-1-.37-1.91-1.18-.71-.63-1.18-1.41-1.32-1.65-.14-.24-.01-.37.1-.49.1-.1.24-.27.35-.41.12-.14.16-.24.24-.39.08-.16.04-.29-.02-.41-.06-.12-.53-1.28-.73-1.75-.19-.46-.39-.39-.53-.39h-.45c-.16 0-.41.06-.63.29-.22.24-.84.82-.84 2s.86 2.31.98 2.47c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.13.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.45-.27Z" />
+		</svg>
+	);
+}
+
 function SectionAnchor({
 	href,
 	children,
@@ -165,15 +191,15 @@ export function SiteShell({ children }: { children: ReactNode }) {
 					</div>
 
 					<div className="space-y-2 text-center lg:text-left">
-						<p className="text-[1.6rem] font-semibold tracking-tight text-white sm:text-[1.9rem]">
+						<p className="text-[1.45rem] font-semibold tracking-tight text-white sm:text-[1.6rem] md:text-[1.9rem]">
 							PT Prima Kirana Spring
 						</p>
-						<p className="text-base leading-8 text-white/92 sm:text-lg">
+						<p className="text-[0.98rem] leading-7 text-white/92 sm:text-base md:text-lg">
 							Jl. Lingkar Utara UMK (timur Djarum Oasis)
 							<br />
 							Kudus 59325
 						</p>
-						<p className="text-base leading-8 text-white/92 sm:text-lg">
+						<p className="text-[0.98rem] leading-7 text-white/92 sm:text-base md:text-lg">
 							Telepon: 081-330-339-909
 							<br />
 							Email: prima.kirana.spring@gmail.com
@@ -187,20 +213,29 @@ export function SiteShell({ children }: { children: ReactNode }) {
 							</p>
 						</div>
 
-						<div className="flex flex-wrap items-center justify-center gap-4 text-white lg:justify-end">
+						<div className="grid w-full max-w-[22rem] grid-cols-3 gap-3 text-white sm:max-w-[26rem] sm:grid-cols-6 lg:max-w-none lg:auto-cols-max lg:grid-flow-col lg:justify-end">
+							<a
+								href="https://www.tiktok.com/@prima.kirana.spring"
+								target="_blank"
+								rel="noreferrer"
+								aria-label="TikTok Prima Kirana Spring"
+								className="flex h-12 w-full items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+							>
+								<TikTokIcon className="size-6" />
+							</a>
 							<a
 								href="https://www.instagram.com/prima.kirana.spring"
 								target="_blank"
 								rel="noreferrer"
 								aria-label="Instagram Prima Kirana Spring"
-								className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+								className="flex h-12 w-full items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
 							>
 								<Instagram className="size-6" />
 							</a>
 							<a
 								href="tel:081330339909"
 								aria-label="Hubungi Prima Kirana Spring"
-								className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+								className="flex h-12 w-full items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
 							>
 								<Phone className="size-6" />
 							</a>
@@ -209,16 +244,25 @@ export function SiteShell({ children }: { children: ReactNode }) {
 								target="_blank"
 								rel="noreferrer"
 								aria-label="Lokasi Prima Kirana Spring"
-								className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+								className="flex h-12 w-full items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
 							>
 								<MapPin className="size-6" />
 							</a>
 							<a
 								href="mailto:prima.kirana.spring@gmail.com"
 								aria-label="Email Prima Kirana Spring"
-								className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+								className="flex h-12 w-full items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
 							>
 								<Mail className="size-6" />
+							</a>
+							<a
+								href="https://wa.me/6281330339909"
+								target="_blank"
+								rel="noreferrer"
+								aria-label="WhatsApp Prima Kirana Spring"
+								className="flex h-12 w-full items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
+							>
+								<WhatsAppIcon className="size-6" />
 							</a>
 						</div>
 					</div>

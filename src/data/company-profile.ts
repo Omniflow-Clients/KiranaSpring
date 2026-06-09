@@ -59,7 +59,7 @@ export const heroHighlights: readonly HeroHighlight[] = [
 	{
 		icon: Gauge,
 		value: "30+ Tahun",
-		label: "pengalaman manufaktur pegas sejak 1995.",
+		label: "pengalaman manufaktur pegas sejak 1995 untuk mitra industri.",
 	},
 	{
 		icon: ShieldCheck,
@@ -73,8 +73,8 @@ export const heroHighlights: readonly HeroHighlight[] = [
 	},
 	{
 		icon: Handshake,
-		value: "Mitra Tepercaya",
-		label: "untuk kebutuhan industri skala kecil hingga besar.",
+		value: "Jasa Galvanisasi",
+		label: "finishing logam untuk proteksi permukaan dan durabilitas.",
 	},
 ];
 

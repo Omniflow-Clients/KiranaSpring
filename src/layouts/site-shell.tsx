@@ -1,7 +1,10 @@
 import { Instagram, Mail, MapPin, Menu, Phone, X } from "lucide-react";
-import { useState, type ReactNode } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useEffect, useState, type ReactNode } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+
+const trackedSectionIds = ["profil", "produk", "kontak"] as const;
+type ActiveSection = "home" | (typeof trackedSectionIds)[number];
 
 function TikTokIcon({ className = "size-6" }: { className?: string }) {
 	return (
@@ -33,16 +36,21 @@ function SectionAnchor({
 	href,
 	children,
 	onClick,
+	isActive = false,
 }: {
 	href: string;
 	children: ReactNode;
 	onClick?: () => void;
+	isActive?: boolean;
 }) {
 	return (
 		<Link
 			to={href}
 			onClick={onClick}
-			className="rounded-[1.2rem] px-4 py-3 text-sm font-medium text-black transition-colors hover:text-primary sm:text-base"
+			className={[
+				"rounded-[1.2rem] px-4 py-3 text-sm font-medium transition-colors sm:text-base",
+				isActive ? "bg-[#c5c5c5] text-white" : "text-black hover:text-primary",
+			].join(" ")}
 		>
 			{children}
 		</Link>
@@ -54,11 +62,13 @@ function NavItem({
 	children,
 	end = false,
 	onClick,
+	isActiveOverride,
 }: {
 	to: string;
 	children: ReactNode;
 	end?: boolean;
 	onClick?: () => void;
+	isActiveOverride?: boolean;
 }) {
 	return (
 		<NavLink
@@ -68,7 +78,7 @@ function NavItem({
 			className={({ isActive }) =>
 				[
 					"rounded-[1.2rem] px-5 py-3 text-sm font-medium transition-colors sm:px-6 sm:text-base",
-					isActive
+					(isActiveOverride ?? isActive)
 						? "bg-[#c5c5c5] text-white"
 						: "text-black hover:text-primary",
 				].join(" ")
@@ -81,7 +91,45 @@ function NavItem({
 
 export function SiteShell({ children }: { children: ReactNode }) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const [activeSection, setActiveSection] = useState<ActiveSection>("home");
+	const location = useLocation();
+	const { hash, pathname } = location;
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (pathname !== "/") {
+			return;
+		}
+
+		const updateActiveSection = () => {
+			const activationLine = window.scrollY + window.innerHeight * 0.38;
+			let currentSection: ActiveSection = "home";
+
+			for (const sectionId of trackedSectionIds) {
+				const section = document.getElementById(sectionId);
+				if (section && section.offsetTop <= activationLine) {
+					currentSection = sectionId;
+				}
+			}
+
+			setActiveSection(currentSection);
+		};
+
+		updateActiveSection();
+		const animationFrame = hash ? window.requestAnimationFrame(updateActiveSection) : null;
+		window.addEventListener("scroll", updateActiveSection, { passive: true });
+		window.addEventListener("resize", updateActiveSection);
+
+		return () => {
+			if (animationFrame) {
+				window.cancelAnimationFrame(animationFrame);
+			}
+			window.removeEventListener("scroll", updateActiveSection);
+			window.removeEventListener("resize", updateActiveSection);
+		};
+	}, [pathname, hash]);
+
+	const isHomePage = pathname === "/";
 
 	const closeMobileMenu = () => {
 		setIsMobileMenuOpen(false);
@@ -108,12 +156,18 @@ export function SiteShell({ children }: { children: ReactNode }) {
 						</Link>
 
 						<nav className="hidden items-center gap-2 xl:flex">
-							<NavItem to="/" end>
+							<NavItem to="/" end isActiveOverride={isHomePage && activeSection === "home"}>
 								Home
 							</NavItem>
-							<SectionAnchor href="/#profil">Profil</SectionAnchor>
-							<SectionAnchor href="/#produk">Produk</SectionAnchor>
-							<SectionAnchor href="/#kontak">Kontak</SectionAnchor>
+							<SectionAnchor href="/#profil" isActive={isHomePage && activeSection === "profil"}>
+								Profil
+							</SectionAnchor>
+							<SectionAnchor href="/#produk" isActive={isHomePage && activeSection === "produk"}>
+								Produk
+							</SectionAnchor>
+							<SectionAnchor href="/#kontak" isActive={isHomePage && activeSection === "kontak"}>
+								Kontak
+							</SectionAnchor>
 							<NavItem to="/blog">Blog</NavItem>
 							<Button
 								asChild
@@ -146,16 +200,33 @@ export function SiteShell({ children }: { children: ReactNode }) {
 						].join(" ")}
 					>
 						<div className="grid grid-cols-1 gap-1 p-3 sm:grid-cols-2 sm:gap-2 sm:p-4">
-							<NavItem to="/" end onClick={closeMobileMenu}>
-							Home
+							<NavItem
+								to="/"
+								end
+								onClick={closeMobileMenu}
+								isActiveOverride={isHomePage && activeSection === "home"}
+							>
+								Home
 							</NavItem>
-							<SectionAnchor href="/#profil" onClick={closeMobileMenu}>
+							<SectionAnchor
+								href="/#profil"
+								onClick={closeMobileMenu}
+								isActive={isHomePage && activeSection === "profil"}
+							>
 								Profil
 							</SectionAnchor>
-							<SectionAnchor href="/#produk" onClick={closeMobileMenu}>
+							<SectionAnchor
+								href="/#produk"
+								onClick={closeMobileMenu}
+								isActive={isHomePage && activeSection === "produk"}
+							>
 								Produk
 							</SectionAnchor>
-							<SectionAnchor href="/#kontak" onClick={closeMobileMenu}>
+							<SectionAnchor
+								href="/#kontak"
+								onClick={closeMobileMenu}
+								isActive={isHomePage && activeSection === "kontak"}
+							>
 								Kontak
 							</SectionAnchor>
 							<div className="sm:contents">

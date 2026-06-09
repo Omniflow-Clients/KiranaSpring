@@ -101,7 +101,7 @@ function FramedImageVisual({
 	objectClassName?: string;
 }) {
 	return (
-		<div className="relative mx-auto h-[22rem] w-full max-w-[34rem] overflow-hidden rounded-[1.4rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)] sm:h-[30rem] sm:rounded-[1.8rem] lg:h-[38rem]">
+		<div className="relative mx-auto h-[22rem] w-full max-w-[14rem] overflow-hidden rounded-[1.4rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)] sm:h-[30rem] sm:max-w-[34rem] sm:rounded-[1.8rem] lg:h-[38rem]">
 			<img src={src} alt={alt} className={["h-full w-full", objectClassName].join(" ")} />
 		</div>
 	);

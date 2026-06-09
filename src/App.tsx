@@ -14,18 +14,29 @@ function ScrollToTop() {
 		}
 
 		if (hash) {
-			window.requestAnimationFrame(() => {
-				const target = document.getElementById(hash.replace("#", ""));
-				if (!target) {
-					return;
-				}
+			let scrollFrame = 0;
+			const layoutFrame = window.requestAnimationFrame(() => {
+				scrollFrame = window.requestAnimationFrame(() => {
+					const target = document.getElementById(hash.replace("#", ""));
+					if (!target) {
+						return;
+					}
 
-				target.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
+					const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 0;
+					const targetTop = target.getBoundingClientRect().top + window.scrollY;
+
+					window.scrollTo({
+						top: Math.max(targetTop - headerHeight - 8, 0),
+						left: 0,
+						behavior: "smooth",
+					});
 				});
 			});
-			return;
+
+			return () => {
+				window.cancelAnimationFrame(layoutFrame);
+				window.cancelAnimationFrame(scrollFrame);
+			};
 		}
 
 		window.scrollTo({

@@ -1,4 +1,4 @@
-import { startTransition, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import { productLines } from "@/data/company-profile";
 
@@ -39,18 +39,25 @@ export function ProductsSection() {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const activeSlide = productSlides[activeIndex];
 
+	useEffect(() => {
+		for (const slide of productSlides) {
+			if (slide.image) {
+				const image = new Image();
+				image.src = slide.image;
+			}
+		}
+	}, []);
+
 	const changeSlide = (direction: -1 | 1) => {
-		startTransition(() => {
-			setActiveIndex((current) => {
-				const nextIndex = current + direction;
-				if (nextIndex < 0) {
-					return productSlides.length - 1;
-				}
-				if (nextIndex >= productSlides.length) {
-					return 0;
-				}
-				return nextIndex;
-			});
+		setActiveIndex((current) => {
+			const nextIndex = current + direction;
+			if (nextIndex < 0) {
+				return productSlides.length - 1;
+			}
+			if (nextIndex >= productSlides.length) {
+				return 0;
+			}
+			return nextIndex;
 		});
 	};
 
@@ -73,7 +80,7 @@ export function ProductsSection() {
 									type="button"
 									aria-label="Produk sebelumnya"
 									onClick={() => changeSlide(-1)}
-									className="absolute left-1 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:left-0 sm:top-1/2 sm:h-14 sm:w-14"
+									className="absolute left-4 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:left-0 sm:top-1/2 sm:h-14 sm:w-14"
 								>
 									<ArrowLeft className="size-6 sm:size-7" />
 								</button>
@@ -104,7 +111,7 @@ export function ProductsSection() {
 									type="button"
 									aria-label="Produk berikutnya"
 									onClick={() => changeSlide(1)}
-									className="absolute right-1 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:right-0 sm:top-1/2 sm:h-14 sm:w-14"
+									className="absolute right-4 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6d456] text-white shadow-[0_14px_35px_rgba(246,212,86,0.35)] transition-transform hover:scale-105 sm:right-0 sm:top-1/2 sm:h-14 sm:w-14"
 								>
 									<ArrowRight className="size-6 sm:size-7" />
 								</button>

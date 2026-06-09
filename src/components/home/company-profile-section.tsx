@@ -1,4 +1,4 @@
-import { startTransition, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Handshake, Lightbulb, ShieldCheck, Target } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { coreValues, missionPoints, trustReasons } from "@/data/company-profile";
@@ -63,6 +63,13 @@ const experienceImagePath = "/company-assets/experience.jpg";
 const missionImagePath = "/company-assets/vision-mission.png";
 const coreValueImagePath = "/company-assets/core-value.png";
 const commitmentImagePath = "/company-assets/commitment.png";
+const profileImagePaths = [
+	directorImagePath,
+	experienceImagePath,
+	missionImagePath,
+	coreValueImagePath,
+	commitmentImagePath,
+] as const;
 
 function DirectorVisual() {
 	return (
@@ -291,18 +298,23 @@ export function CompanyProfileSection() {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const activeSlide = profileSlides[activeIndex];
 
+	useEffect(() => {
+		for (const imagePath of profileImagePaths) {
+			const image = new Image();
+			image.src = imagePath;
+		}
+	}, []);
+
 	const changeSlide = (direction: -1 | 1) => {
-		startTransition(() => {
-			setActiveIndex((current) => {
-				const nextIndex = current + direction;
-				if (nextIndex < 0) {
-					return profileSlides.length - 1;
-				}
-				if (nextIndex >= profileSlides.length) {
-					return 0;
-				}
-				return nextIndex;
-			});
+		setActiveIndex((current) => {
+			const nextIndex = current + direction;
+			if (nextIndex < 0) {
+				return profileSlides.length - 1;
+			}
+			if (nextIndex >= profileSlides.length) {
+				return 0;
+			}
+			return nextIndex;
 		});
 	};
 

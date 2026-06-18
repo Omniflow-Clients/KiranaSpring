@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { PostMeta } from "@/components/blog/post-meta";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,7 +11,6 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import type { BlogPost } from "@/lib/blog";
-import { PostMeta } from "@/components/blog/post-meta";
 
 export function PostCard({
 	post,
@@ -81,7 +81,11 @@ export function PostCard({
 						</Badge>
 					))}
 				</div>
-				<Button asChild variant="ghost" className="px-0 text-[#1d3d9f] hover:bg-transparent hover:text-[#2348d8]">
+				<Button
+					asChild
+					variant="ghost"
+					className="px-0 text-[#1d3d9f] hover:bg-transparent hover:text-[#2348d8]"
+				>
 					<Link to={`/blog/${post.slug}`}>
 						Baca artikel
 						<ArrowRight className="size-4" />

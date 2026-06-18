@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 import { productLines } from "@/data/company-profile";
 
 type ProductSlide = {
@@ -62,7 +62,10 @@ export function ProductsSection() {
 	};
 
 	return (
-		<section id="produk" className="w-full scroll-mt-20 sm:scroll-mt-24 xl:scroll-mt-28">
+		<section
+			id="produk"
+			className="w-full scroll-mt-20 sm:scroll-mt-24 xl:scroll-mt-28"
+		>
 			<div className="overflow-hidden bg-[#3f5fe2] px-4 py-10 text-white sm:px-6 sm:py-12 md:px-10 lg:px-16 lg:py-16">
 				<h2 className="mx-auto max-w-[14ch] text-center font-heading text-[2.3rem] leading-[1.06] font-light tracking-tight sm:max-w-[16ch] sm:text-4xl md:max-w-[18ch] md:text-6xl">
 					Designed for you, <span className="font-semibold">PERFECTED</span> in
@@ -101,7 +104,8 @@ export function ProductsSection() {
 												Custom Spring
 											</p>
 											<p className="mt-1.5 text-[0.52rem] leading-[1.35] text-white/80 sm:mt-2 sm:text-[0.68rem] sm:leading-5 md:text-sm md:leading-6">
-												Sesuai desain, dimensi, material, dan kebutuhan aplikasi.
+												Sesuai desain, dimensi, material, dan kebutuhan
+												aplikasi.
 											</p>
 										</div>
 									)}

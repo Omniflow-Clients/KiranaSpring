@@ -1,5 +1,5 @@
-import { lazy, Suspense } from "react";
 import { ChevronLeft } from "lucide-react";
+import { lazy, Suspense } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PostMeta } from "@/components/blog/post-meta";
 import { Badge } from "@/components/ui/badge";
@@ -11,11 +11,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import {
-	getBlogPostBySlug,
-	getRelatedBlogPosts,
-} from "@/lib/blog";
 import { SiteShell } from "@/layouts/site-shell";
+import { getBlogPostBySlug, getRelatedBlogPosts } from "@/lib/blog";
 import { NotFoundPage } from "@/pages/not-found-page";
 
 const BlogMarkdown = lazy(async () => {
@@ -129,9 +126,9 @@ export function BlogPostPage() {
 										Ringkasan artikel
 									</CardTitle>
 									<CardDescription className="leading-7 text-[#66729f]">
-										Materi ini dirancang sebagai referensi cepat untuk tim engineering,
-										quality control, dan maintenance yang butuh konteks teknis secara
-										ringkas.
+										Materi ini dirancang sebagai referensi cepat untuk tim
+										engineering, quality control, dan maintenance yang butuh
+										konteks teknis secara ringkas.
 									</CardDescription>
 								</CardHeader>
 								<CardContent className="space-y-5 text-[#66729f]">
@@ -153,8 +150,9 @@ export function BlogPostPage() {
 									</div>
 									<div className="rounded-[1.5rem] border border-dashed border-[#cdd8ff] p-5">
 										<p className="text-sm leading-7">
-											Cocok dibaca saat Anda sedang membandingkan opsi pegas, meninjau
-											risiko produksi, atau menyusun checklist inspeksi internal.
+											Cocok dibaca saat Anda sedang membandingkan opsi pegas,
+											meninjau risiko produksi, atau menyusun checklist inspeksi
+											internal.
 										</p>
 									</div>
 								</CardContent>

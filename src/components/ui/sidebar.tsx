@@ -1,6 +1,6 @@
+import * as Slot from "@radix-ui/react-slot";
 import { PanelLeftIcon } from "lucide-react";
 import * as React from "react";
-import * as Slot from "@radix-ui/react-slot";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 
@@ -44,10 +44,7 @@ function SidebarProvider({
 	);
 }
 
-function Sidebar({
-	className,
-	children,
-}: React.ComponentProps<"aside">) {
+function Sidebar({ className, children }: React.ComponentProps<"aside">) {
 	const { open, setOpen } = useSidebar();
 
 	return (
@@ -81,10 +78,7 @@ function Sidebar({
 	);
 }
 
-function SidebarInset({
-	className,
-	children,
-}: React.ComponentProps<"main">) {
+function SidebarInset({ className, children }: React.ComponentProps<"main">) {
 	const { open } = useSidebar();
 	return (
 		<main
@@ -119,31 +113,21 @@ function SidebarTrigger({
 	);
 }
 
-function SidebarHeader({
-	className,
-	...props
-}: React.ComponentProps<"div">) {
+function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
 	return <div className={cn("p-3", className)} {...props} />;
 }
 
-function SidebarContent({
-	className,
-	...props
-}: React.ComponentProps<"div">) {
-	return <div className={cn("flex-1 overflow-y-auto p-2", className)} {...props} />;
+function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
+	return (
+		<div className={cn("flex-1 overflow-y-auto p-2", className)} {...props} />
+	);
 }
 
-function SidebarFooter({
-	className,
-	...props
-}: React.ComponentProps<"div">) {
+function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
 	return <div className={cn("border-t p-2", className)} {...props} />;
 }
 
-function SidebarGroup({
-	className,
-	...props
-}: React.ComponentProps<"div">) {
+function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
 	return <div className={cn("mb-3", className)} {...props} />;
 }
 

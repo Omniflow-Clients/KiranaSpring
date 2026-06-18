@@ -14,7 +14,9 @@ export function BlogMarkdown({
 			<ReactMarkdown
 				remarkPlugins={[remarkGfm]}
 				components={{
-					a: ({ ...props }) => <a {...props} target="_blank" rel="noreferrer" />,
+					a: ({ ...props }) => (
+						<a {...props} target="_blank" rel="noreferrer" />
+					),
 				}}
 			>
 				{content}

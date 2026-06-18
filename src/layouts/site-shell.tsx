@@ -1,36 +1,10 @@
 import { Instagram, Mail, MapPin, Menu, Phone, X } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-const trackedSectionIds = ["profil", "produk", "kontak"] as const;
+const trackedSectionIds = ["profil", "produk", "jasa", "kontak"] as const;
 type ActiveSection = "home" | (typeof trackedSectionIds)[number];
-
-function TikTokIcon({ className = "size-6" }: { className?: string }) {
-	return (
-		<svg
-			viewBox="0 0 24 24"
-			fill="currentColor"
-			aria-hidden="true"
-			className={className}
-		>
-			<path d="M19.59 6.69A4.83 4.83 0 0 1 16 5.13V16a6 6 0 1 1-6-6c.2 0 .39.02.58.05v3.03a3 3 0 1 0 2.42 2.95V2h3.01a4.85 4.85 0 0 0 4.58 4.58v3.11Z" />
-		</svg>
-	);
-}
-
-function WhatsAppIcon({ className = "size-6" }: { className?: string }) {
-	return (
-		<svg
-			viewBox="0 0 24 24"
-			fill="currentColor"
-			aria-hidden="true"
-			className={className}
-		>
-			<path d="M19.05 4.94A9.9 9.9 0 0 0 12 2a9.94 9.94 0 0 0-8.6 14.92L2 22l5.23-1.37A9.94 9.94 0 1 0 19.05 4.94Zm-7.05 14a7.94 7.94 0 0 1-4.04-1.1l-.29-.17-3.1.81.83-3.02-.19-.31A7.94 7.94 0 1 1 12 18.94Zm4.35-5.96c-.24-.12-1.4-.69-1.62-.77-.22-.08-.37-.12-.53.12-.16.24-.61.77-.75.93-.14.16-.27.18-.51.06-.24-.12-1-.37-1.91-1.18-.71-.63-1.18-1.41-1.32-1.65-.14-.24-.01-.37.1-.49.1-.1.24-.27.35-.41.12-.14.16-.24.24-.39.08-.16.04-.29-.02-.41-.06-.12-.53-1.28-.73-1.75-.19-.46-.39-.39-.53-.39h-.45c-.16 0-.41.06-.63.29-.22.24-.84.82-.84 2s.86 2.31.98 2.47c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.13.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.45-.27Z" />
-		</svg>
-	);
-}
 
 function SectionAnchor({
 	href,
@@ -116,7 +90,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
 		};
 
 		updateActiveSection();
-		const animationFrame = hash ? window.requestAnimationFrame(updateActiveSection) : null;
+		const animationFrame = hash
+			? window.requestAnimationFrame(updateActiveSection)
+			: null;
 		window.addEventListener("scroll", updateActiveSection, { passive: true });
 		window.addEventListener("resize", updateActiveSection);
 
@@ -145,7 +121,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
 			<header className="sticky top-0 z-20 bg-white/92 backdrop-blur-xl">
 				<div className="mx-auto flex w-full max-w-[2048px] flex-col gap-4 px-4 py-4 sm:px-5 sm:py-5 lg:px-12 xl:px-14 2xl:px-16">
 					<div className="flex items-center justify-between gap-4 sm:gap-6">
-						<Link className="flex items-center gap-4" to="/" onClick={closeMobileMenu}>
+						<Link
+							className="flex items-center gap-4"
+							to="/"
+							onClick={closeMobileMenu}
+						>
 							<div className="flex h-[3.75rem] w-[12.5rem] items-center sm:h-[4.4rem] sm:w-[15rem] md:h-[5.2rem] md:w-[21rem]">
 								<img
 									src="/home-assets/navbar-logo.png"
@@ -156,19 +136,32 @@ export function SiteShell({ children }: { children: ReactNode }) {
 						</Link>
 
 						<nav className="hidden items-center gap-2 xl:flex">
-							<NavItem to="/" end isActiveOverride={isHomePage && activeSection === "home"}>
+							<NavItem
+								to="/"
+								end
+								isActiveOverride={isHomePage && activeSection === "home"}
+							>
 								Home
 							</NavItem>
-							<SectionAnchor href="/#profil" isActive={isHomePage && activeSection === "profil"}>
-								Profil
+							<SectionAnchor
+								href="/#profil"
+								isActive={isHomePage && activeSection === "profil"}
+							>
+								Profile
 							</SectionAnchor>
-							<SectionAnchor href="/#produk" isActive={isHomePage && activeSection === "produk"}>
+							<SectionAnchor
+								href="/#produk"
+								isActive={isHomePage && activeSection === "produk"}
+							>
 								Produk
 							</SectionAnchor>
-							<SectionAnchor href="/#kontak" isActive={isHomePage && activeSection === "kontak"}>
-								Kontak
+							<SectionAnchor
+								href="/#jasa"
+								isActive={isHomePage && activeSection === "jasa"}
+							>
+								Jasa
 							</SectionAnchor>
-							<NavItem to="/blog">Blog</NavItem>
+							<NavItem to="/blog">Artikel</NavItem>
 							<Button
 								asChild
 								size="lg"
@@ -180,13 +173,19 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
 						<button
 							type="button"
-							aria-label={isMobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+							aria-label={
+								isMobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"
+							}
 							aria-expanded={isMobileMenuOpen}
 							aria-controls="mobile-navigation"
 							onClick={() => setIsMobileMenuOpen((current) => !current)}
 							className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-[#d9def7] bg-white text-[#2f58e7] shadow-[0_10px_24px_rgba(47,88,231,0.12)] transition-colors hover:bg-[#f5f7ff] xl:hidden"
 						>
-							{isMobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+							{isMobileMenuOpen ? (
+								<X className="size-5" />
+							) : (
+								<Menu className="size-5" />
+							)}
 						</button>
 					</div>
 
@@ -213,7 +212,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 								onClick={closeMobileMenu}
 								isActive={isHomePage && activeSection === "profil"}
 							>
-								Profil
+								Profile
 							</SectionAnchor>
 							<SectionAnchor
 								href="/#produk"
@@ -223,15 +222,15 @@ export function SiteShell({ children }: { children: ReactNode }) {
 								Produk
 							</SectionAnchor>
 							<SectionAnchor
-								href="/#kontak"
+								href="/#jasa"
 								onClick={closeMobileMenu}
-								isActive={isHomePage && activeSection === "kontak"}
+								isActive={isHomePage && activeSection === "jasa"}
 							>
-								Kontak
+								Jasa
 							</SectionAnchor>
 							<div className="sm:contents">
 								<NavItem to="/blog" onClick={closeMobileMenu}>
-									Blog
+									Artikel
 								</NavItem>
 							</div>
 							<Button
@@ -249,7 +248,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
 			<main>{children}</main>
 
-			<footer id="kontak" className="w-full scroll-mt-20 bg-[#2f58e7] sm:scroll-mt-24 xl:scroll-mt-28">
+			<footer
+				id="kontak"
+				className="w-full scroll-mt-20 bg-[#2f58e7] sm:scroll-mt-24 xl:scroll-mt-28"
+			>
 				<div className="mx-auto grid w-full max-w-[1680px] gap-8 px-5 py-10 text-white sm:px-6 md:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:px-12 lg:py-12 xl:px-16">
 					<div className="flex justify-center lg:justify-start">
 						<div className="rounded-[2rem] bg-white p-5 shadow-[0_22px_40px_rgba(17,34,101,0.16)]">
@@ -277,14 +279,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
 						</p>
 					</div>
 
-					<div className="flex flex-col items-center gap-5 lg:items-end">
+					<div className="flex flex-col items-center gap-5 lg:items-center">
 						<div className="rounded-[1.35rem] bg-white px-6 py-3 text-center shadow-[0_18px_36px_rgba(17,34,101,0.12)]">
 							<p className="text-[1.25rem] font-semibold text-[#2f58e7] sm:text-[1.45rem]">
 								Terhubung dengan kami
 							</p>
 						</div>
 
-						<div className="grid w-full max-w-[22rem] grid-cols-3 gap-3 text-white sm:max-w-[26rem] sm:grid-cols-6 lg:max-w-none lg:auto-cols-max lg:grid-flow-col lg:justify-end">
+						<div className="grid w-full max-w-[22rem] grid-cols-3 gap-3 text-white sm:max-w-[26rem] sm:grid-cols-6 lg:max-w-none lg:auto-cols-max lg:grid-flow-col lg:justify-center">
 							<a
 								href="https://www.tiktok.com/@prima.kirana.spring"
 								target="_blank"
@@ -292,7 +294,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 								aria-label="TikTok Prima Kirana Spring"
 								className="flex h-12 w-full items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
 							>
-								<TikTokIcon className="size-6" />
+								<img src="/icons/tiktok.svg" alt="TikTok" className="size-6" />
 							</a>
 							<a
 								href="https://www.instagram.com/prima.kirana.spring"
@@ -333,7 +335,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
 								aria-label="WhatsApp Prima Kirana Spring"
 								className="flex h-12 w-full items-center justify-center rounded-[1rem] border border-white/24 bg-white/8 transition-colors hover:bg-white/14"
 							>
-								<WhatsAppIcon className="size-6" />
+								<img
+									src="/icons/whatsapp.svg"
+									alt="WhatsApp"
+									className="size-6"
+								/>
 							</a>
 						</div>
 					</div>

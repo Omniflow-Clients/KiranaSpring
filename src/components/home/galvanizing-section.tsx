@@ -23,11 +23,22 @@ const galvanizingFeatures = [
 
 export function GalvanizingSection() {
 	return (
-		<section className="w-full">
+		<section
+			id="jasa"
+			className="w-full scroll-mt-20 sm:scroll-mt-24 xl:scroll-mt-28"
+		>
 			<div className="overflow-hidden bg-[#3f5fe2] px-6 py-12 text-white md:px-10 lg:px-16 lg:py-16">
 				<h2 className="text-center font-heading text-4xl font-light tracking-tight md:text-6xl">
 					Jasa Galvanisasi
 				</h2>
+
+				<div className="mx-auto mt-10 max-w-3xl">
+					<img
+						src="/home-assets/galvanizing.webp"
+						alt="Jasa Galvanisasi"
+						className="w-full rounded-[1.8rem] shadow-[0_18px_40px_rgba(20,35,111,0.20)]"
+					/>
+				</div>
 
 				<div className="mt-14 grid gap-6 md:grid-cols-3">
 					{galvanizingFeatures.map((item) => {

@@ -170,7 +170,10 @@ function buildBlogPost([filePath, source]: [string, string]): BlogPost {
 
 const blogPosts = Object.entries(markdownModules)
 	.map(buildBlogPost)
-	.sort((firstPost, secondPost) => parseDate(secondPost.date).getTime() - parseDate(firstPost.date).getTime());
+	.sort(
+		(firstPost, secondPost) =>
+			parseDate(secondPost.date).getTime() - parseDate(firstPost.date).getTime()
+	);
 
 export function getAllBlogPosts() {
 	return blogPosts;
@@ -194,8 +197,12 @@ export function getRelatedBlogPosts(slug: string, limit = 2) {
 	return blogPosts
 		.filter((post) => post.slug !== slug)
 		.sort((firstPost, secondPost) => {
-			const firstScore = firstPost.tags.filter((tag) => currentPost.tags.includes(tag)).length;
-			const secondScore = secondPost.tags.filter((tag) => currentPost.tags.includes(tag)).length;
+			const firstScore = firstPost.tags.filter((tag) =>
+				currentPost.tags.includes(tag)
+			).length;
+			const secondScore = secondPost.tags.filter((tag) =>
+				currentPost.tags.includes(tag)
+			).length;
 			return secondScore - firstScore;
 		})
 		.slice(0, limit);

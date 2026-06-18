@@ -1,7 +1,19 @@
+import {
+	ArrowLeft,
+	ArrowRight,
+	Handshake,
+	Lightbulb,
+	ShieldCheck,
+	Target,
+} from "lucide-react";
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, Handshake, Lightbulb, ShieldCheck, Target } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
-import { coreValues, missionPoints, trustReasons } from "@/data/company-profile";
+import {
+	coreValues,
+	missionPoints,
+	trustReasons,
+} from "@/data/company-profile";
 
 type CarouselSlide = {
 	id: string;
@@ -28,7 +40,7 @@ const profileSlides: readonly CarouselSlide[] = [
 		accent: "30+ Tahun",
 		type: "experience",
 		description: [
-			"PT Prima Kirana Spring merupakan perusahaan manufaktur pegas yang berlokasi di Kudus, Jawa Tengah. Perusahaan ini berawal dari CV Prima Spring yang didirikan pada tahun 1995 oleh Bpk. Hudyono. Meski memiliki latar belakang pendidikan di bidang medis, pendiri memiliki minat dan kemampuan teknis yang kuat dalam dunia manufaktur.",
+			"PT Prima Kirana Spring merupakan perusahaan manufaktur pegas yang berlokasi di Kudus, Jawa Tengah. Perusahaan ini berawal dari CV Prima Spring yang didirikan pada tahun 1995 oleh Bpk. Hudyono.",
 			"Sebelum berdirinya Prima Spring, beliau telah merintis Prima Teknik sebagai penyedia komponen logam untuk kebutuhan industri elektronika. Dalam perjalanan bisnis yang dinamis, perusahaan terus beradaptasi hingga bertransformasi menjadi PT Prima Kirana Spring sebagai bentuk penguatan identitas dan komitmen terhadap pertumbuhan jangka panjang.",
 			"Kini tongkat estafet kepemimpinan dipercayakan kepada generasi penerus, yaitu Stefani R. Hudyono, yang membawa perusahaan ke arah yang lebih modern, inovatif, dan kompetitif.",
 		],
@@ -74,9 +86,6 @@ const profileImagePaths = [
 function DirectorVisual() {
 	return (
 		<div className="relative mx-auto max-w-[34rem]">
-			<div className="absolute left-[-1rem] top-10 hidden h-[76%] w-10 rounded-[0.9rem] bg-[#bdbdbd] sm:block lg:left-[-2.3rem] lg:top-14 lg:w-14" />
-			<div className="absolute right-[-1rem] top-9 hidden h-[77%] w-10 rounded-[0.9rem] bg-[#bdbdbd] sm:block lg:right-[-2.3rem] lg:top-12 lg:w-14" />
-
 			<div className="relative rounded-[1.4rem] bg-white px-4 pt-4 pb-4 shadow-[0_20px_50px_rgba(156,156,156,0.15)] sm:rounded-[1.8rem] sm:px-8 sm:pt-8 sm:pb-6">
 				<div className="mx-auto flex h-[22rem] max-w-[14rem] items-end justify-center overflow-hidden rounded-[0.3rem] bg-[#3559e4] sm:h-[28rem] sm:max-w-[18rem] lg:h-[33rem] lg:max-w-[20rem]">
 					<img
@@ -109,7 +118,11 @@ function FramedImageVisual({
 }) {
 	return (
 		<div className="relative mx-auto h-[22rem] w-full max-w-[14rem] overflow-hidden rounded-[1.4rem] bg-white shadow-[0_20px_50px_rgba(156,156,156,0.15)] sm:h-[30rem] sm:max-w-[34rem] sm:rounded-[1.8rem] lg:h-[38rem]">
-			<img src={src} alt={alt} className={["h-full w-full", objectClassName].join(" ")} />
+			<img
+				src={src}
+				alt={alt}
+				className={["h-full w-full", objectClassName].join(" ")}
+			/>
 		</div>
 	);
 }
@@ -128,8 +141,12 @@ function ValueCard({
 			<div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/12 sm:h-14 sm:w-14">
 				<Icon className="size-6 sm:size-7" />
 			</div>
-			<h3 className="mt-4 text-[1.35rem] font-semibold sm:mt-5 sm:text-[1.7rem]">{title}</h3>
-			<p className="mt-3 text-[0.95rem] leading-6 text-white/88 sm:text-[1.02rem] sm:leading-7">{description}</p>
+			<h3 className="mt-4 text-[1.35rem] font-semibold sm:mt-5 sm:text-[1.7rem]">
+				{title}
+			</h3>
+			<p className="mt-3 text-[0.95rem] leading-6 text-white/88 sm:text-[1.02rem] sm:leading-7">
+				{description}
+			</p>
 		</div>
 	);
 }
@@ -142,7 +159,12 @@ function AccentTitle({
 	className?: string;
 }) {
 	return (
-		<div className={["inline-block bg-[#ffd32c] px-3 py-1 sm:px-5", className].join(" ")}>
+		<div
+			className={[
+				"inline-block bg-[#ffd32c] px-3 py-1 sm:px-5",
+				className,
+			].join(" ")}
+		>
 			<h2 className="font-heading text-[2.4rem] leading-none font-semibold tracking-tight text-[#2f58e7] sm:text-[3.3rem] md:text-[4.4rem] xl:text-[5.1rem]">
 				{title}
 			</h2>
@@ -192,20 +214,24 @@ function SlideVisual({ slide }: { slide: CarouselSlide }) {
 function SlideBody({ slide }: { slide: CarouselSlide }) {
 	if (slide.type === "mission") {
 		return (
-			<div className="space-y-6 pt-2 lg:space-y-8 lg:pt-8">
+			<div className="space-y-6 pt-2 font-heading lg:space-y-8 lg:pt-8">
 				<AccentTitle title={slide.title} />
 
 				<div className="space-y-5 sm:space-y-6">
 					<div className="rounded-[1.5rem] bg-[#2f58e7] px-5 py-5 text-white shadow-[0_18px_35px_rgba(47,88,231,0.18)] sm:rounded-[2rem] sm:px-8 sm:py-7">
-						<p className="text-[1.5rem] font-semibold text-[#ffd32c] sm:text-[2rem]">Visi</p>
+						<p className="text-[1.5rem] font-semibold text-[#ffd32c] sm:text-[2rem]">
+							Visi
+						</p>
 						<p className="mt-3 text-[1rem] leading-[1.35] font-medium sm:text-[1.35rem] sm:leading-[1.2]">
-							Menjadi perusahaan manufaktur pegas (spring) yang unggul,
-							presisi, dan terpercaya di Indonesia.
+							Menjadi perusahaan manufaktur pegas (spring) yang unggul, presisi,
+							dan terpercaya di Indonesia.
 						</p>
 					</div>
 
 					<div className="rounded-[1.5rem] bg-[#2f58e7] px-5 py-5 text-white shadow-[0_18px_35px_rgba(47,88,231,0.18)] sm:rounded-[2rem] sm:px-8 sm:py-7">
-						<p className="text-[1.5rem] font-semibold text-[#ffd32c] sm:text-[2rem]">Misi</p>
+						<p className="text-[1.5rem] font-semibold text-[#ffd32c] sm:text-[2rem]">
+							Misi
+						</p>
 						<ul className="mt-4 space-y-3 text-[0.98rem] leading-[1.35] sm:space-y-4 sm:text-[1.2rem] sm:leading-[1.2]">
 							{missionPoints.map((point) => (
 								<li key={point} className="flex gap-3">
@@ -222,7 +248,7 @@ function SlideBody({ slide }: { slide: CarouselSlide }) {
 
 	if (slide.type === "values") {
 		return (
-			<div className="space-y-6 pt-2 lg:space-y-8 lg:pt-8">
+			<div className="space-y-6 pt-2 font-heading lg:space-y-8 lg:pt-8">
 				<AccentTitle title={slide.title} />
 				<div className="grid gap-5 md:grid-cols-2">
 					<ValueCard
@@ -252,7 +278,7 @@ function SlideBody({ slide }: { slide: CarouselSlide }) {
 
 	if (slide.type === "commitment") {
 		return (
-			<div className="space-y-6 pt-2 lg:space-y-8 lg:pt-8">
+			<div className="space-y-6 pt-2 font-heading lg:space-y-8 lg:pt-8">
 				<AccentTitle title={slide.title} />
 				<div className="grid gap-4">
 					{trustReasons.map((item) => (
@@ -274,7 +300,7 @@ function SlideBody({ slide }: { slide: CarouselSlide }) {
 	}
 
 	return (
-		<div className="space-y-6 pt-2 lg:space-y-8 lg:pt-8">
+		<div className="space-y-6 pt-2 font-heading lg:space-y-8 lg:pt-8">
 			<AccentTitle title={slide.title} />
 			{slide.type === "experience" ? (
 				<p className="-mt-2 text-[0.98rem] font-medium text-[#2f58e7] sm:-mt-3 sm:text-[1.15rem] md:text-[1.45rem]">
@@ -295,7 +321,10 @@ function SlideBody({ slide }: { slide: CarouselSlide }) {
 }
 
 export function CompanyProfileSection() {
-	const [activeIndex, setActiveIndex] = useState(0);
+	const location = useLocation();
+	const [activeIndex, setActiveIndex] = useState(
+		location.hash === "#profil" ? 1 : 0
+	);
 	const activeSlide = profileSlides[activeIndex];
 
 	useEffect(() => {
@@ -319,7 +348,10 @@ export function CompanyProfileSection() {
 	};
 
 	return (
-		<section id="profil" className="w-full scroll-mt-20 sm:scroll-mt-24 xl:scroll-mt-28">
+		<section
+			id="profil"
+			className="w-full scroll-mt-20 sm:scroll-mt-24 xl:scroll-mt-28"
+		>
 			<div className="profile-panel relative overflow-hidden bg-[#e5e5e5] px-4 py-8 sm:px-6 md:px-10 md:py-10 lg:px-14 lg:py-12">
 				<div className="mb-6 sm:mb-8">
 					<div className="flex items-center gap-3">
@@ -330,13 +362,14 @@ export function CompanyProfileSection() {
 					</div>
 
 					<div className="mt-4 text-xs text-[#5f6781] sm:text-sm">
-						Geser dengan tombol panah atau klik topik untuk melihat ringkasan profil perusahaan.
+						Geser dengan tombol panah atau klik topik untuk melihat ringkasan
+						profil perusahaan.
 					</div>
 				</div>
 
 				<div className="relative grid gap-8 lg:gap-10 xl:grid-cols-[0.9fr_1.1fr] xl:items-start">
 					<div className="space-y-5 sm:space-y-6">
-						<div className="relative mx-auto max-w-[40rem] px-6 sm:px-8 lg:px-14">
+						<div className="relative mx-auto flex max-w-[40rem] items-center justify-center px-6 min-h-[26rem] sm:min-h-[34rem] sm:px-8 lg:min-h-[40rem] lg:px-14">
 							<button
 								type="button"
 								aria-label="Profil sebelumnya"

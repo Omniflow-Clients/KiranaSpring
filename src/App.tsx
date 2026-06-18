@@ -22,7 +22,9 @@ function ScrollToTop() {
 						return;
 					}
 
-					const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 0;
+					const headerHeight =
+						document.querySelector("header")?.getBoundingClientRect().height ??
+						0;
 					const targetTop = target.getBoundingClientRect().top + window.scrollY;
 
 					window.scrollTo({

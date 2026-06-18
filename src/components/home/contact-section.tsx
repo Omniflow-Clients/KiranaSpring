@@ -1,4 +1,6 @@
 import { PackageCheck } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
@@ -6,12 +8,10 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
 	type ContactChannel,
-	type IconComponent,
 	contactChannels,
+	type IconComponent,
 	socialChannels,
 } from "@/data/company-profile";
 import { cn } from "@/lib/utils";
@@ -43,7 +43,12 @@ function ContactCard({ icon: Icon, label, value, href }: ContactChannel) {
 					<p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/62">
 						{label}
 					</p>
-					<p className={cn("break-words leading-[1.22] font-medium text-white", getContactValueClass(label))}>
+					<p
+						className={cn(
+							"break-words leading-[1.22] font-medium text-white",
+							getContactValueClass(label)
+						)}
+					>
 						{value}
 					</p>
 				</div>

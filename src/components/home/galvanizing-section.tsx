@@ -32,32 +32,32 @@ export function GalvanizingSection() {
 					Jasa Galvanisasi
 				</h2>
 
-				<div className="mx-auto mt-10 max-w-3xl">
+				<div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
 					<img
 						src="/home-assets/galvanizing.webp"
 						alt="Jasa Galvanisasi"
-						className="w-full rounded-[1.8rem] shadow-[0_18px_40px_rgba(20,35,111,0.20)]"
+						className="w-full rounded-[1.8rem] shadow-[0_18px_40px_rgba(20,35,111,0.20)] lg:max-h-[28rem] lg:object-cover"
 					/>
-				</div>
 
-				<div className="mt-14 grid gap-6 md:grid-cols-3">
-					{galvanizingFeatures.map((item) => {
-						const Icon = item.icon;
-						return (
-							<div
-								key={item.title}
-								className="rounded-[1.8rem] bg-white/12 p-7 shadow-[0_18px_40px_rgba(20,35,111,0.18)] backdrop-blur-sm"
-							>
-								<div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/14">
-									<Icon className="size-7 text-[#ffd54a]" />
+					<div className="grid gap-6">
+						{galvanizingFeatures.map((item) => {
+							const Icon = item.icon;
+							return (
+								<div
+									key={item.title}
+									className="rounded-[1.8rem] bg-white/12 p-7 shadow-[0_18px_40px_rgba(20,35,111,0.18)] backdrop-blur-sm"
+								>
+									<div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/14">
+										<Icon className="size-7 text-[#ffd54a]" />
+									</div>
+									<h3 className="mt-6 text-2xl font-semibold">{item.title}</h3>
+									<p className="mt-4 text-base leading-8 text-white/86">
+										{item.description}
+									</p>
 								</div>
-								<h3 className="mt-6 text-2xl font-semibold">{item.title}</h3>
-								<p className="mt-4 text-base leading-8 text-white/86">
-									{item.description}
-								</p>
-							</div>
-						);
-					})}
+							);
+						})}
+					</div>
 				</div>
 			</div>
 		</section>

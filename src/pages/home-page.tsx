@@ -1,6 +1,5 @@
 import { BlogSection } from "@/components/home/blog-section";
 import { CompanyProfileSection } from "@/components/home/company-profile-section";
-import { ContactSection } from "@/components/home/contact-section";
 import { CtaSection } from "@/components/home/cta-section";
 import { GalvanizingSection } from "@/components/home/galvanizing-section";
 import { HeroSection } from "@/components/home/hero-section";
@@ -23,7 +22,6 @@ export function HomePage() {
 			<ProductionProcessSection />
 			<CtaSection />
 			<BlogSection featuredPosts={featuredPosts} />
-			<ContactSection />
 		</SiteShell>
 	);
 }

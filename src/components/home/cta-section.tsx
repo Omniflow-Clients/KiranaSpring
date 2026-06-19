@@ -26,16 +26,14 @@ export function CtaSection() {
 				</h2>
 
 				<div className="mx-auto mt-12 grid max-w-6xl gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-14">
-					<div className="relative overflow-hidden rounded-[1.8rem] bg-white shadow-[0_22px_48px_rgba(141,141,141,0.14)]">
-						<video
-							src="/home-assets/why-us.mp4"
-							controls
-							poster="/home-assets/hero-background.jpg"
-							className="aspect-[9/16] w-full max-w-[18rem] object-cover mx-auto"
-						>
-							<track kind="captions" />
-						</video>
-					</div>
+					<video
+						src="/home-assets/why-us.mp4"
+						controls
+						poster="/home-assets/hero-background.jpg"
+						className="aspect-[9/16] w-full max-w-[18rem] rounded-[1.8rem] object-cover mx-auto"
+					>
+						<track kind="captions" />
+					</video>
 
 					<div className="space-y-8">
 						{promises.map((item) => (

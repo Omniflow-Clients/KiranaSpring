@@ -31,7 +31,7 @@ export function CtaSection() {
 							src="/home-assets/why-us.mp4"
 							controls
 							poster="/home-assets/hero-background.jpg"
-							className="aspect-[9/16] w-full object-cover sm:aspect-video"
+							className="aspect-[9/16] w-full object-cover sm:max-h-[26rem]"
 						>
 							<track kind="captions" />
 						</video>

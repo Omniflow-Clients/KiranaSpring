@@ -32,11 +32,11 @@ export function GalvanizingSection() {
 					Jasa Galvanisasi
 				</h2>
 
-				<div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+				<div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,24rem)_1fr] lg:items-center">
 					<img
 						src="/home-assets/galvanizing.webp"
 						alt="Jasa Galvanisasi"
-						className="w-full rounded-[1.8rem] shadow-[0_18px_40px_rgba(20,35,111,0.20)] lg:max-h-[28rem] lg:object-cover"
+						className="mx-auto aspect-[3/4] w-full max-w-sm rounded-[1.8rem] object-contain shadow-[0_18px_40px_rgba(20,35,111,0.20)]"
 					/>
 
 					<div className="grid gap-6">

@@ -109,7 +109,7 @@ export function ContactSection() {
 						Kontak dan Inquiry
 					</p>
 					<h2 className="font-heading text-[2.2rem] leading-[1.08] font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
-						Siap menjadi mitra terpercaya untuk kebutuhan spring dan custom
+						Terus mendukung kebutuhan industri untuk spring dan custom
 						manufacturing Anda.
 					</h2>
 					<p className="max-w-2xl text-base leading-8 text-white/78 sm:text-lg sm:leading-9">
@@ -158,7 +158,7 @@ export function ContactSection() {
 						<InquiryScope
 							icon={PackageCheck}
 							title="Ruang lingkup inquiry"
-							description="Compression spring, tension spring, torsion spring, wire form custom, review desain, hingga kebutuhan produksi berulang."
+							description="Compression spring, extension spring, torsion spring, wire form custom, review desain, hingga kebutuhan produksi berulang."
 						/>
 					</div>
 				</div>

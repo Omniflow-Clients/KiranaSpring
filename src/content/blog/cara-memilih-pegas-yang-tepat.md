@@ -27,7 +27,7 @@ Kalau data ini masih berupa perkiraan kasar, hasil desain juga akan ikut bias. P
 Ada beberapa parameter yang sering baru dipikirkan saat produk sudah masuk tahap trial:
 
 1. **Solid height** untuk compression spring, supaya pegas tidak terlalu cepat mentok.
-2. **Initial tension** untuk tension spring, agar gaya awalnya konsisten.
+2. **Initial tension** untuk extension spring, agar gaya awalnya konsisten.
 3. **Arah torsi dan sudut kaki** pada torsion spring, supaya pemasangan tidak memaksa bentuk kerja pegas.
 4. **Finishing permukaan** jika pegas bekerja di lingkungan yang berisiko korosi.
 

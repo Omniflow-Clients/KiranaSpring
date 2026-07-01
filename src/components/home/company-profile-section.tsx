@@ -31,7 +31,7 @@ const profileSlides: readonly CarouselSlide[] = [
 		type: "intro",
 		description: [
 			"Kami merasa terhormat atas waktu yang Anda luangkan untuk mengenal lebih dekat PT Prima Kirana Spring. Sejak tahun 1995, kami telah membangun reputasi sebagai perusahaan manufaktur yang fokus pada produksi spring berkualitas tinggi dengan tingkat presisi, ketahanan, dan konsistensi yang terjaga. Berpengalaman melayani kebutuhan skala kecil hingga besar, kami terus berinovasi dan meningkatkan standar kualitas di setiap lini produksi.",
-			"Dengan komitmen pada setiap detail pekerjaan, kami menghadirkan solusi profesional, unggul, dan dapat diandalkan. Kepercayaan dari berbagai perusahaan besar menjadi bukti dedikasi kami dalam menjaga mutu dan pelayanan. Kami berharap dapat menjalin kemitraan jangka panjang serta tumbuh dan berkembang bersama di masa depan.",
+			"Dengan komitmen pada setiap detail pekerjaan, kami menghadirkan solusi profesional, konsisten, dan dapat diandalkan. Kepercayaan dari berbagai perusahaan besar menjadi bukti dedikasi kami dalam menjaga mutu dan pelayanan. Kami berharap dapat menjalin kemitraan jangka panjang serta tumbuh dan berkembang bersama di masa depan.",
 		],
 	},
 	{
@@ -42,7 +42,7 @@ const profileSlides: readonly CarouselSlide[] = [
 		description: [
 			"PT Prima Kirana Spring merupakan perusahaan manufaktur pegas yang berlokasi di Kudus, Jawa Tengah. Perusahaan ini berawal dari CV Prima Spring yang didirikan pada tahun 1995 oleh Bpk. Hudyono.",
 			"Sebelum berdirinya Prima Spring, beliau telah merintis Prima Teknik sebagai penyedia komponen logam untuk kebutuhan industri elektronika. Dalam perjalanan bisnis yang dinamis, perusahaan terus beradaptasi hingga bertransformasi menjadi PT Prima Kirana Spring sebagai bentuk penguatan identitas dan komitmen terhadap pertumbuhan jangka panjang.",
-			"Kini tongkat estafet kepemimpinan dipercayakan kepada generasi penerus, yaitu Stefani R. Hudyono, yang membawa perusahaan ke arah yang lebih modern, inovatif, dan kompetitif.",
+			"Kini tongkat estafet kepemimpinan dipercayakan kepada generasi penerus, yaitu Stefani R. Hudyono, yang membawa perusahaan ke arah yang lebih modern, inovatif, dan sesuai kebutuhan pelanggan.",
 		],
 	},
 	{
@@ -223,8 +223,8 @@ function SlideBody({ slide }: { slide: CarouselSlide }) {
 							Visi
 						</p>
 						<p className="mt-3 text-[1rem] leading-[1.35] font-medium sm:text-[1.35rem] sm:leading-[1.2]">
-							Menjadi perusahaan manufaktur pegas (spring) yang unggul, presisi,
-							dan terpercaya di Indonesia.
+							Menjadi perusahaan manufaktur pegas (spring) yang konsisten,
+							presisi, dan dapat diandalkan di Indonesia.
 						</p>
 					</div>
 

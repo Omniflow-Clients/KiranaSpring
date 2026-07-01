@@ -87,7 +87,7 @@ export const productLines: readonly ProductLine[] = [
 			"Dirancang untuk bekerja stabil pada kebutuhan gaya tekan yang konsisten.",
 	},
 	{
-		title: "Tension Spring",
+		title: "Extension Spring",
 		description:
 			"Pegas tarik yang umum digunakan pada peralatan rumah tangga dan komponen industri.",
 		accent:
@@ -111,7 +111,7 @@ export const productLines: readonly ProductLine[] = [
 
 export const missionPoints: readonly string[] = [
 	"Menghasilkan produk berkualitas tinggi yang presisi dan konsisten.",
-	"Memberikan pelayanan terbaik kepada pelanggan.",
+	"Memberikan pelayanan yang responsif kepada pelanggan.",
 	"Mengembangkan inovasi dan efisiensi dalam proses produksi.",
 	"Membangun hubungan jangka panjang dengan mitra industri.",
 ];

@@ -34,7 +34,7 @@ export function GalvanizingSection() {
 
 				<div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
 					<img
-						src="/home-assets/galvanizing.webp"
+						src="/mesin_galvanisasi.webp"
 						alt="Jasa Galvanisasi"
 						className="w-full rounded-[1.8rem] shadow-[0_18px_40px_rgba(20,35,111,0.20)] lg:max-h-[28rem] lg:object-cover"
 					/>
